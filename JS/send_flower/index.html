@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>talk in JS-代理模式</title>
+</head>
+<body>
+    <script>
+        //object 声明常量  描述的对象是怎样的就出来了 对象字面量  JSON　Object
+        //对象上面只有属性或者方法
+        const zl = {
+            name:'周麟',
+            age:22,
+            single:true,
+            hometown:'赣州',
+            room:1154,
+            yz:60,
+            senFlower: function(target){
+                // console.log(target.name);
+                target.receiveFlower(zl);   //使得对象有收花功能
+            }   //函数的功能 行为  将动作用函数执行    target 形参
+        };                   
+        const tao={
+            name:'桃',
+            age:17,
+            mood:50,
+             receiveFlower:function(sender){
+            //   ！ 如果mood 大于80 收花，否则就拒绝
+             if(tao.mood<80){
+                 console.log('收到了花,但是没空');
+             }else 
+             console.log('本公主现在的心情为：'+tao.mood);
+             console.log('收到了花');
+             console.log('备胎排队一下');
+        },
+            listenGoodMood:function(){
+                //心情好不好  定时器
+                // console.log('本宫谁都不见'),
+                
+                setTimeout(function(){
+                        // console.log('本公主心情变好了');
+                        // ！ 心情值改变
+                        for(i=1;;i++){
+                            tao.mood=Math.round(Math.random()*100);
+                            console.log('本公主现在的心情为：'+tao.mood);
+                            if(tao.mood>=80)
+                            {break;}
+                        }
+                            tao.receiveFlower();
+                },3000);
+            }
+        };
+        
+        //由a->b   转 a->c->b
+        //a 送花 调用send_flower
+        //c 收花 转送给b
+        //b 收花  receive_flower
+        //语言精粹 第一二章
+        const huahua={
+            name:'花花',
+            //与桃实现了用一个接口（方法），他就可以代理桃收花
+            receiveFlower:function(sender){
+                //心情好，再送
+                //代理者，监听桃的心情
+                tao.listenGoodMood(function(){
+                    
+                })
+                // if(sender.name=='周麟'){
+                //     console.log('还是我们在一起吧！');
+                // }else {
+                //     tao.receiveFlower();
+                // }
+               // tao.receiveFlower(sender);//代理模式
+
+            }
+        };
+        // const sb={
+        //  name:'傻'
+        //  sFlower:function(target){
+        //     target.receiveFlower(zl); 
+        // }
+        // };
+    </script>
+</body>
+</html>

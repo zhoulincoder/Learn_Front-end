@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://127.0.0.1:8080/JS/the_js_way/ans1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Some musical instruments</h1>
+  <ul>
+    <li id="clarinet" class="wind woodwind">
+      The <a href="https://en.wikipedia.org/wiki/Clarinet">clarinet</a>
+    </li>
+    <li id="saxophone" class="wind woodwind">
+      The <a href="https://en.wikipedia.org/wiki/Saxophone">saxophone</a>
+    </li>
+    <li id="trumpet" class="wind brass">
+      The <a href="https://en.wikipedia.org/wiki/Trumpet">trumpet</a>
+    </li>
+    <li id="violin" class="chordophone">
+      The <a href="https://en.wikipedia.org/wiki/Violin">violin</a>
+    </li>
+    <li id="harpsichord">
+      The <a href="https://en.wikipedia.org/wiki/Harpsichord">harpsichord</a>
+    </li>
+  </ul>
+  <script>
+  function linkInfo(){
+      //打出文档中有多少a标签，第一个标签的href，最后一个标签的href
+     const aElements = document.getElementsByTagName("a");
+     console.log(aElements.length);
+     if(!aElements) return;
+     console.log(aElements[0].href);
+     console.log(aElements[aElements.length-1].href);
+  }
+  linkInfo();
+  console.log(document.getElementById("saxophone").classList.contains("wind"));
+  //检查类名列表里面是否有wind这个类名
+  // console.log(document.getElementById("vilin"));
+
+  const hasClass = (id,someclass)=>{
+    if(document.getElementById("id")){
+      console.log(document.getElementById("id").className.contains("someclass")+"存在");
+    }else {
+      console.log("不存在id为"+id+"的元素。");
+    }
+    // const check1 = document.getElementById("id").classList.contains("someclass");
+
+    //判断某id的元素，具有某类名 true false
+    //可能找不到元素，还要找类名，提示错误
+    //saxophone woodwind true
+    //saxophone brass false
+    //trumpet brass true
+    //contrabass chorphone error
+  };
+  </script>
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function() {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					head.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					head.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function(msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			console.log('Live reload enabled.');
+		})();
+	}
+	// ]]>
+</script>
+
+</body></html>

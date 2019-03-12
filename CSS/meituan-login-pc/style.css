@@ -1,0 +1,56 @@
+*{margin: 0;padding: 0;}
+.login-container{
+    width: 286px;
+    height: 298px;
+    border: 1px solid #e5e5e5;
+    margin: 50% auto;
+}
+.default{
+    padding-top: 39px;
+}
+/* .head-img-row{
+    margin-bottom: 14px;
+} */
+.head-img-row img{
+    width: 58px;
+    height: 58px;
+    border: 5px solid #e5e5e5;
+    margin: 0 auto;
+    display: block;
+    /* 转变成块级元素使得居中 */
+    border-radius: 50%;
+}
+.user-name{
+    font-size: 16px;
+    color: #222222;
+    text-align: center;
+    width: 152px;
+     /* 避免名字长度过长导致的不美观 */
+    margin: 16px auto;
+    white-space: nowrap;
+   /* 超出长度不换行 */
+    text-overflow: ellipsis;
+   /* 显示用三个点 */
+    overflow: hidden;
+   /* 超出隐藏 */
+}
+.btn{
+    height: 48px;
+    width: 148px;
+    display: block;
+    text-align: center;
+    border: 1px solid #e5e5e5e5;
+    line-height: 48px;
+    color: #323232;
+    border-radius: 24px;
+    margin: 0 auto;
+}
+.btn:hover{
+    background-color: #dddddd;
+}
+a{
+    text-decoration: none;
+}
+.btn-login{
+    margin-top: 19px;
+}

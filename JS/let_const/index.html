@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var name="周麟";
+    
+        function dlName() {
+            //函数局部作用域 
+            //函数运行时  诞生
+            var dl = "呵呵的";
+            //运行结束后回收
+        }
+        //"{}" 块级作用域   const遵守块级作用域
+        if (true) {
+            const cxygls = "燕零"
+        }
+        for(var i=0;i<10;i++){
+            console.log(i);
+            setTimeout(function() {
+                console.log('the number is '+ i);
+            },1000);
+        }
+        console.log(name);
+        console.log(cxygls);
+    // 对象上没有这个key 说明
+    </script>
+</body>
+</html>

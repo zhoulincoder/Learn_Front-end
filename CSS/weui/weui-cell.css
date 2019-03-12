@@ -1,0 +1,46 @@
+*{margin: 0;padding: 0;}
+.weui-cells{
+    font-size: 17px;
+    line-height: 1.47058824;
+    background-color: #ffffff;
+    overflow: hidden;
+    /* 子元素超出父元素则隐藏 */
+    position: relative;
+    margin-top: 1.17647059em;
+}
+/* boder-top? 会影响盒子的大小  是盒子的一部分   伪元素不会影响盒子模型*/
+.weui-cells:before{
+    position: absolute;
+    /* 定位会让元素离开文档流 */
+    content: "";
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    /* background-color: red; */
+    border-top: 1px solid #e5e5e5;
+    transform: scaleY(.5);
+    transform-origin: 0 0;
+}
+.weui-cells::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    border-bottom: 1px solid #e5e5e5;
+    transform: scaleY(.5);
+    transform-origin: 0 100%;
+}
+.weui-cell{
+    padding: 10px 15px;
+    position: relative;
+    display: flex;
+    /* 弹性布局  元素为一行 */
+    align-items: center;
+}
+.weui-cell__bd{
+    flex: 1;
+    /* 只对一个元素设置主元素  当其他 */
+}

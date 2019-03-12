@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Some musical instruments</h1>
+  <ul>
+    <li id="clarinet" class="wind woodwind">
+      The <a href="https://en.wikipedia.org/wiki/Clarinet">clarinet</a>
+    </li>
+    <li id="saxophone" class="wind woodwind">
+      The <a href="https://en.wikipedia.org/wiki/Saxophone">saxophone</a>
+    </li>
+    <li id="trumpet" class="wind brass">
+      The <a href="https://en.wikipedia.org/wiki/Trumpet">trumpet</a>
+    </li>
+    <li id="violin" class="chordophone">
+      The <a href="https://en.wikipedia.org/wiki/Violin">violin</a>
+    </li>
+    <li id="harpsichord">
+      The <a href="https://en.wikipedia.org/wiki/Harpsichord">harpsichord</a>
+    </li>
+  </ul>
+  <script>
+  function linkInfo(){
+      //打出文档中有多少a标签，第一个标签的href，最后一个标签的href
+     const aElements = document.getElementsByTagName("a");
+     console.log(aElements.length);
+     if(!aElements) return;
+     console.log(aElements[0].href);
+     console.log(aElements[aElements.length-1].href);
+  }
+  linkInfo();
+  console.log(document.getElementById("saxophone").classList.contains("wind"));
+  //检查类名列表里面是否有wind这个类名
+  // console.log(document.getElementById("violin"));
+  // let check1=console.log(document.getElementById("id"));
+
+  document.getElementById("saxophone").classList.remove("wind");
+  console.log(document.getElementById("saxophone").classList.contains("wind"));
+  // const hasClass = (id,someclass)=>{
+  //   let check1=document.getElementById(id);
+  //   if(!check1){
+  //       console.log("error");
+  //   }else {
+  //       console.log(check1.classList.contains(someclass));
+        
+  //   }  
+     
+    
+    // const check1 = document.getElementById("id").classList.contains("someclass");
+
+    //判断某id的元素，具有某类名 true false
+    //可能找不到元素，还要找类名，提示错误
+    //saxophone woodwind true
+    //saxophone brass false
+    //trumpet brass true
+    //contrabass chorphone error
+  // };
+  // hasClass("saxophone","wind");
+  // hasClass("saxophone","false");
+  // hasClass("trumpet","brass");
+  // hasClass("constrabass","chorphone");
+  
+  </script>
+</body>
+</html>

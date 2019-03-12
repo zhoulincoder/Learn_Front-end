@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>duck sing-JS动态类型</title>
+</head>
+<body>
+    <script>
+        //json object
+       
+        const duck = {
+            //duckSinging:function()={}
+            //duckSing(){}简写形式
+            duckSinging () {
+                console.log('嘎嘎嘎');
+            }
+        }
+        const chicken={
+            duckSinging () {
+                console.log('嘎嘎嘎');
+            }
+        }
+        let choir=[];//合唱团  es6 变量声明方法
+        let joinChoir = (animal) =>{
+            //规避不合法的undefined
+            if (animal && typeof animal.duckSinging==='function'){
+                choir.push(animal);
+                console.log('恭喜加入合唱团');
+                //console.log(choir.length);
+            }
+        }
+        for (let i=0;i<999;i++) {
+            joinChoir(duck);
+        }
+        console.log('鸭子3合唱团成员数：',choir.length);
+
+        joinChoir(chicken);
+        console.log('鸭子合成员数：',choir.length);
+        
+    </script>
+</body>
+</html>
