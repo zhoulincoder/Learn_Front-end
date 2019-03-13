@@ -1,0 +1,33 @@
+*{padding: 0;margin: 0;}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+.container, .page{
+    width: 100%;
+    height: 100%;
+}
+.page.button{
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+.weui-btn{
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 14px;
+    box-sizing: border-box;
+    /* 使其paading不占据父级空间 */
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    color:white;
+    background-color: #1aade1;
+    line-height: 3;
+    /* 字体的倍数 */
+    border-radius: 10px;
+}
+.weui-btn_disabled{
+    color: rgba(255, 255,255,0.6);
+}
