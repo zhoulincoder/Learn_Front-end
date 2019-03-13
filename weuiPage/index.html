@@ -11,12 +11,31 @@
     <div class="container">
         <div class="page button js_show">
             <div class="page__bd page__bd_spacing">
-                <a href="#" class="weui-btn weui-btn_primary">页面主操作 normal</a>
-                <a href="#" class="weui-btn weui-btn_primary weui-btn_loading">页面操作 loading</a>
-                <a href="#" class="weui-btn weui-btn_disabled">页面主操作 loading</a>
+                <a href="#" class="weui-btn weui-btn_primary" id="primary">页面主操作 normal </a>
+                <a href="#" class="weui-btn weui-btn_primary weui-btn_loading" id="loading">
+                        <i class="weui-loading"></i>页面操作 loading</a>
+                <a href="#" class="weui-btn weui-btn_disabled">页面主操作 Disabled</a>
+                <a href="#" class="weui-btn weui-btn_try">吼吼哈嘿</a>
             </div>
         </div>
     </div>
-    
+    <script>
+        var oLoading = document.getElementById('loading')
+        console.log(oLoading);
+        oLoading.onclick = function () {
+            this.innerHTML = 'good!'
+        }
+        var oPrimary = document.getElementById('primary')
+        oPrimary.onclick = function () {
+            this.classList.add('active'); 
+
+            setTimeout( () => {
+            oPrimary.classList.remove('active');
+        },2000)
+        }
+
+        
+        
+    </script>
 </body>
 </html>
