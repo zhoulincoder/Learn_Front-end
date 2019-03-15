@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM 表格</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <table id="mountains" class="table table-striped"></table>
+            </div>
+        </div>
+    </div>
+    
+        <!-- 渐变条纹 -->
+    
+    <script>
+    // one row colum table  数据可视化
+    // 动态DOM 实时更新，不用刷新页面
+    let mountains = [
+  { name: "Monte Falco", height: 1658, place: "Parco Foreste Casentinesi" },
+  { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi" },
+  { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi" },
+  { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi" },
+  { name: "Monte Amiata", height: 1738, place: "Siena" }
+    ];
+    function generateTableHead(table) {
+        // let thead = document.createElement('thead');
+        let thead = table.createTHead();
+        // 表格创建的THead 的标准方法    深入学习table DOM   
+        let row = thead.insertRow();
+        for (let key of data){
+            // 遍历 data 中的 key
+            console.log(key);
+            let th = document.createElement('th');
+            let text = document.createTextNode(key);
+            th.appendChild(text);
+            row.appendChild(th);
+        }
+    };
+    function genreateTable(table, data) {
+        for(let element of data){
+            let row = table.insertRow();
+            for (let key in element) {
+                let cell = row.insertCell();
+                let text = document.createTextNode(element[key]);
+                cell.appendChild(text);
+            }
+        }
+    }
+
+    let table = document.querySelector("#mountains");
+    let data = Object.keys(mountains[0]);
+    generateTable(table, mountains);
+    generateTableHead(table, data);  
+    </script>
+</body>
+</html>
