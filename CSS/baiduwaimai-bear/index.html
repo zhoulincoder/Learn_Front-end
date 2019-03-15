@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>百度🐻</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- <style>
+         #box{
+             width: 10px;
+             height: 10px;
+             border: 1px solid #000;
+             transition: width 0.5s; 
+             /* 通过时间控制 使得变化效果过渡缓慢 */
+         }
+    </style> -->
+</head>
+<body>
+    <!-- <div id="box"></div>
+    <script>
+        const box = document.getElementById('box');
+        let width = 10;
+        box.addEventListener('click', () =>{
+            width += 10;
+            box.style.width = width +'px';
+        });
+    </script> -->
+    
+    <div class="view preload">
+        <div class="load-logo-c">
+            <!-- bear -->
+            <div class="rider1-c">
+                <div class="rider1"></div>
+            </div>
+            <!-- 进度条 -->
+            <div class="process-c">
+                <div class="process-v"></div>
+            </div>
+            <div id="next">下一页</div>
+        </div>
+    </div>
+    <div class="view index"></div>
+    <script>
+        const process = document.querySelector('.process-v');
+        //width+=10;
+        const next = document.getElementById('next');
+        next.addEventListener('click', () => {
+            const preload = document.querySelector('.view.preload');
+            preload.style.transform = 'translate3d(0,'+ -100 +'%,0)';
+            // preload.style.transform = 'translate3d(0, -100%, 0)';
+        })
+        let width = -10;
+        let interval = setInterval( () => {
+            width +=10;
+            console.log(width);
+            process.style.width = width + '%';
+            if(width >=100) clearInterval(interval);
+        },100);
+        // 每一百毫秒就执行一次
+        setTimeout( () => {},100);
+       
+    </script>
+</body>
+</html>
