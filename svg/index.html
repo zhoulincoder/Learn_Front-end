@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG-霓虹灯</title>
+    <style>
+        /* svg{
+          stroke: brown;
+            /* 描边  边框颜色 */
+          /* stroke-width: 15;
+          stroke-linecap: round; */
+          /* 线的两端是圆弧 */
+          /* stroke-linejoin: round; */
+          /* 线的连接处形状 */
+          /* fill: none;   
+          
+        } */ 
+        *{padding: 0;margin: 0;}
+        .text{
+            font-size: 64px;
+            font-weight: bold;
+            text-transform: uppercase;
+            stroke: blueviolet;
+            stroke-width: 2px;
+            fill: none;
+            stroke-dasharray: 90 310;
+            /* stroke-dashoffset: -1;  */
+            /* 整个文字的实心值为310   0为全消失，值越大实的部分越多 */
+            animation: stroke 6s infinite linear;
+        }
+        .text-2{
+            stroke: #fc9c12;
+            text-shadow: 0 0 5px #fc9c12;
+            animation-delay: -3s;
+        }
+        .text-3{
+            stroke: #e74c3c;
+            text-shadow: 0 0 5px #e74c3c;
+            animation-delay: -4.5s;
+        }
+        .text-4{
+            stroke: #9b59b6;
+            text-shadow: 0 0 5px #9b59b6;
+            animation-delay: -6s;
+        }
+        @keyframes stroke {
+            100%{
+                stroke-dashoffset: -400;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 图形表现，canvas -->
+    <!-- svg 中不是DOM结构 在其中绘制数学图形 -->
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="750" height="500">
+        <line x1="100" y1="3" x2="3" y2="100"></line>  
+        盒子左上角（0，0）
+        <rect x="13" y="13" width="80" height="60" />
+    </svg> -->
+    <svg width="100%" height="100" xmlns="http://www.w3.org/2000/svg">
+        <text text-anchor="middle" x="50%" y="50%" class="text">
+            segmentfault.com
+        </text>
+        <text text-anchor="middle" x="50%" y="50%" class="text text-2">
+            segmentfault.com
+        </text>
+        <text text-anchor="middle" x="50%" y="50%" class="text text-3">
+            segmentfault.com
+        </text>
+        <text text-anchor="middle" x="50%" y="50%" class="text text-4">
+            segmentfault.com
+        </text>
+    </svg>
+    <div style="height: 100px; border: 1px dashed red;"></div>
+</body>
+</html>
