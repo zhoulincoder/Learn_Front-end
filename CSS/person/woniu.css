@@ -1,0 +1,137 @@
+*{padding: 0;margin: 0;}
+html body{
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+}
+ul li{
+    list-style: none;
+}
+.page{
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+.page-header{
+    width: 100%;
+}
+.page-header__pic{
+    width: 100%;
+    height: 200px;
+    background: url("./images/woman.jpg") no-repeat;
+    background-size:cover;
+}
+.page-header__userinfo{
+    padding: 10px 10px 13px 10px;
+    position: relative;
+    border: 1px solid #ffffff;
+    box-shadow:5px #50a9ff; 
+}
+.name{
+    line-height: 1;
+}
+.name .sex{
+    height: 24px;
+    width: 24px;
+    background: url("./images/性别女.png") no-repeat;
+    background-size: 100%;
+    position: absolute;
+    margin-top: -2px;
+}
+.labels{
+    margin-top: 10px;
+}
+.label{
+    padding: 5px 10px;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+}
+.blue{
+    background-color: #50a9ff;
+}
+.green{
+    background-color: #23c93e;
+}
+.orange{
+    background-color: #fb8800;
+}
+.page-header__msg{
+    margin-top: 10px;
+}
+.item{
+    width: 95px;
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    font-size: 16px;
+}
+.city::before{
+    content:'';
+    width: 20px;
+    height: 23px;
+    background: url(./images/定位.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 0;top: 0;   
+}
+.job::before{
+    content:'';
+    width: 20px;
+    height: 23px;
+    background: url(./images/职业.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 0;top: 0;   
+}
+.like::before{
+    content:'';
+    width: 20px;
+    height: 23px;
+    background: url(./images/爱心.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 0;top: 0;   
+}
+.wechat::before{
+    content:'';
+    width: 20px;
+    height: 23px;
+    background: url(./images/wechat.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 0;top: 0;   
+}
+.phone::before{
+    content:'';
+    width: 20px;
+    height: 23px;
+    background: url(./images/电话.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 0;top: 0;   
+}
+.ewm{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top:40px;
+    right: 11px;
+}
+.ewm img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.envolope{
+    position: absolute;
+    right: 30px;
+    bottom: 20px;  
+    height: 50px;
+    width: 55px;
+}
+.envolope img{
+    display: block;
+    width: 100px;
+    height: 100px;
+}
