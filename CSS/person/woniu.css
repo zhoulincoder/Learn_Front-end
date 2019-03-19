@@ -24,8 +24,8 @@ ul li{
 .page-header__userinfo{
     padding: 10px 10px 13px 10px;
     position: relative;
-    border: 1px solid #ffffff;
-    box-shadow:5px #50a9ff; 
+    border: 1px solid #e6e9e9;
+    box-shadow: 2px black; 
 }
 .name{
     line-height: 1;

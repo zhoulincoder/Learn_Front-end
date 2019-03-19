@@ -1,0 +1,39 @@
+*{padding: 0;margin: 0;}
+@font-face {
+    font-family: 'iconfont';  /* project id 1096747 */
+    src: url('//at.alicdn.com/t/font_1096747_5u577ovop04.eot');
+    src: url('//at.alicdn.com/t/font_1096747_5u577ovop04.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1096747_5u577ovop04.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1096747_5u577ovop04.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1096747_5u577ovop04.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1096747_5u577ovop04.svg#iconfont') format('svg');
+  }
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+.swiper-slide{
+    width: 300px;
+    height: 178px;
+    border-radius: 5px;
+    border:1px solid red;
+    padding: 12px 16px;
+    box-sizing: border-box;
+}
+.swiper-slide.balance-plan{
+    background: linear-gradient(135deg, #ec6534,#f19144);
+    color: #ffffff;
+}
+.swiper-slide.balance-plan header span{
+    display: block;
+}
+.swiper-slide.balance-plan header{
+    display: flex;
+    align-items: center;
+}
+.swiper-slide.balance-plan .slide-header__title{
+    flex: 1;
+}
