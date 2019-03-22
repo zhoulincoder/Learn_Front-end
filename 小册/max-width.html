@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Max-width</title>
+    <style>
+        html, body{
+            margin: 0;padding: 0;
+        }
+        .page{
+            height: 100%;
+            background-color: red;
+            /* 多种设备上良好显示  手机和ipad 100%宽度    pc960良好显示 左右留白 */
+            /* 主要浏览产品-手机，pc上班时看 */
+            max-width: 960px;
+            /* 实现在非pc显示100% */
+            margin: 0 auto;
+            min-height: 100%;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="page"></div>
+</body>
+</html>

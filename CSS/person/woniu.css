@@ -3,6 +3,7 @@ html body{
     height: 100%;
     width: 100%;
     font-size: 20px;
+    font-family: Microsoft YaHei;
 }
 ul li{
     list-style: none;
@@ -64,7 +65,8 @@ ul li{
     display: inline-block;
     position: relative;
     padding-left: 25px;
-    font-size: 16px;
+    font-size: 14px;
+    color: #b9b9b9;
 }
 .city::before{
     content:'';
@@ -149,20 +151,24 @@ ul li{
 }
 .img-heads .head1{
     margin: 12px 9px 12px 18px;
-    background: url("./images/woman.jpg") no-repeat;
+    background: url("./images/th1.jpg") no-repeat;
+    background-size: contain;
 }
 .img-heads .head2{
     margin: 12px 9px 12px 0;
-    background: url("./images/woman.jpg") no-repeat;
+    background: url("./images/th2.jpg") no-repeat;
+    background-size: contain;
 }
 .img-heads .head3{
     margin: 12px 0 12px 0;
-    background: url("./images/woman.jpg") no-repeat;
+    background: url("./images/th3.jpg") no-repeat;
+    background-size: contain;
 }
 .readed-history .text{
     font-size: 12px;
     margin-left: 163px;
     margin-top: 21px;
+    
 }
 .readed-history .text .more{
     
@@ -171,4 +177,123 @@ ul li{
     background: url("./images/右箭头.png") no-repeat;
     background-size: 100%;
     position: absolute;
+}
+.provide{
+    margin: 18px 0;
+    border: 1px solid #e6e9e9;
+    box-shadow: 2px black; 
+}
+.provide-title{
+    width: 40px;
+    padding-left: 8px;
+    border-left: 3px solid #35abff;
+    font-weight: bold;
+}
+.provide-detail{
+    margin: 14px 0px 10px 10px;
+    font-size: 12px;
+    line-height: 20px;
+}
+.need{
+    margin: 18px 0;
+    border: 1px solid #e6e9e9;
+    box-shadow: 2px black; 
+}
+.need-title{
+    width: 40px;
+    padding-left: 8px;
+    border-left: 3px solid #08db37;
+    font-weight: bold;
+}
+.need-detail{
+    margin: 14px 0px 10px 10px;
+    font-size: 12px;
+    line-height: 20px;
+}
+.ad{
+    width: 345px;
+    height: 85px;
+    margin: 18px 0;
+    border: 1px solid #e6e9e9;
+    box-shadow: 2px black; 
+    background: url(./images/woman.jpg) no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    text-align: center;
+}
+.ad-detail{
+    margin-top: 20px;
+}
+.ad-time{
+    font-weight: bold;
+}
+.personalLogo{
+    width: 345px;
+    height: 160px;
+    margin: 18px 0;
+    border: 1px solid #e6e9e9;
+    box-shadow: 2px black; 
+}
+.personalLogo .title{
+    padding-left: 8px;
+    border-left: 3px solid #ff8200;
+    font-weight: bold;
+}
+.introduces .introduce{
+    width: 102px;
+    height: 102px;
+    float: left;
+    margin: 15px 0px 15px 10px;
+}
+.introduces .one{
+    background: url(./images/pr1.jpg) no-repeat;   
+    background-size: contain;
+}
+.introduces .two{
+    background: url(./images/pr2.jpg) no-repeat;   
+    background-size: contain;
+}
+.introduces .three{
+    background: url(./images/pr3.jpg) no-repeat; 
+    background-size: contain;  
+}
+.footBtn{
+    margin-top: 22px;
+    margin-bottom: 100px;
+}
+.footBtn .btn{
+    height: 50px;
+    width: 166.5px;
+    border-radius: 50px;
+    border: 1px solid #e6e9e9;
+    box-shadow:5px black; 
+    position: relative;
+}
+.btn.edit{
+    text-align: center;
+    float: left;
+    line-height: 50px;
+}
+/* .edit #deit__logo{
+    width: 30px;
+    height: 30px;
+    background: url(./images/编辑.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+} */
+.edit::before{
+    content:'';
+    width: 20px;
+    height: 20px;
+    background: url(./images/编辑.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 40px;top: 15px;
+}
+.btn.share{
+    float: right;
+    background-color: #48a7fc;
+    color: white;
+    line-height: 50px;
+    text-align: center;
 }
