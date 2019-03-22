@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        // 面向对象!
+        // 函数构建？
+        function EditInPlace(id, value, parentElement){
+            this.id = id;
+            this.value = value;
+            this.parentElement = parentElement;
+            this.createElement(this.id);
+            // ？
+        }
+    //     <div id="ep1">
+    //      <span id="content">
+    //          点击进入编辑模式
+    //      </span>
+    //      <input id="input" type="text" value="明德厚学 爱国荣校">
+    //      <input type="button" value="Save" id="save">
+    //      <input type="button" value="Cancel" id="cancel">
+    //  </div>
+        EditInPlace.prototype.createElement = function (id) {
+             this.containerElement = document.createElement('div');
+             this.containerElement.id = id;
+             this.parentElement.appendChild(this.containerElement);
+            //  值
+            this.staticElement = document.createElement('span');
+            this.staticElement.innerHTML = this.value;
+            this.containerElement.appendChild(this.staticElement);
+            //  输入框
+            this.fieldElement = document.createElement('input');
+            this.fieldElement.type = 'text';
+            this.fieldElement.value = this.value;
+            this.containerElement.appendChild(this.fieldElement);
+            // save Btn
+            this.saveButton = document.createElement('input');
+            this.saveButton.type = 'button';
+            this.saveButton.value = 'Save';
+            this.containerElement.appendChild(this.saveButton)
+             //cancel Btn
+            this.cancelButton = document.createElement('input');
+            this.cancelButton.type = 'button';
+            this.cancelButton.value = 'Cancel';
+            this.containerElement.appendChild(this.cancelButton)
+            this.convertToText();
+            this.attachEvent();
+        }
+        EditInPlace.prototype.convertToText = function() {
+            this.saveButton.style.display='none';
+            this.cancelButton.style.display='none';
+            this.fieldElement.style.display='none';
+            this.staticElement.style.display='inline';
+        }
+        // 编辑
+        EditInPlace.prototype.convertToEditAble = function() {
+            this.saveButton.style.display='inline';
+            this.cancelButton.style.display='inline';
+            this.fieldElement.style.display='inline';
+            this.staticElement.style.display='none';
+        }
+        EditInPlace.prototype.attachEvent = function () {
+            console.log(this);
+            this.staticElement.addEventListener('click', () => {
+                console.log('click',this);
+                console.log(1);
+                this.convertToEditAble();
+                // 箭头函数下的this 指的是new实例  作用域
+                // 普通函数下的this指的是被点击被确定的部分  当前作用域
+            });
+            // 点击保存
+            this.saveButton.addEventListener('click', () => {
+            const val = this.fieldElement.value;
+            setTimeout( () => {
+                this.staticElement.innerHTML = val;
+                this.convertToText();
+            },1000)
+            })
+            // 点击取消
+            this.cancelButton.addEventListener('click', () => {
+            this.convertToEditAble();
+            console.log('取消成功')
+            })
+        }
+    //     save.addEventListener('click', () => {
+    //      setTimeout(() => {
+    //          const val = input.value;
+    //         console.log('保存成功!', val);
+    //         // 读取内容
+    //         content.innerHTML = val;
+    //         console.log(content.innerHTML);
+    //         //写操作
+    //         convertToText();
+    //      },1000)
+    //  })
+        // 类-封装 ——>实例化
+        const ed1 = new EditInPlace(
+            'ep1',
+            "吼吼哈嘿",
+            document.getElementById('app')
+            // 挂载
+        )
+        const ed2 = new EditInPlace(
+            'ep1',
+            "吼吼哈嘿 我去",
+            document.getElementById('app')
+        )
+        
+    </script>
+</body>
+</html>

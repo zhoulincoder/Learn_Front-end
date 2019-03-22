@@ -126,7 +126,7 @@ ul li{
 .envolope{
     position: absolute;
     right: 30px;
-    bottom: 20px;  
+    bottom: 25px;  
     height: 50px;
     width: 55px;
 }
@@ -134,4 +134,41 @@ ul li{
     display: block;
     width: 100px;
     height: 100px;
+}
+.readed-history{
+    margin: 18px 0;
+    border: 1px solid #e6e9e9;
+    box-shadow: 2px black; 
+    overflow: hidden;
+}
+.readed-history .img-head{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    float: left;
+}
+.img-heads .head1{
+    margin: 12px 9px 12px 18px;
+    background: url("./images/woman.jpg") no-repeat;
+}
+.img-heads .head2{
+    margin: 12px 9px 12px 0;
+    background: url("./images/woman.jpg") no-repeat;
+}
+.img-heads .head3{
+    margin: 12px 0 12px 0;
+    background: url("./images/woman.jpg") no-repeat;
+}
+.readed-history .text{
+    font-size: 12px;
+    margin-left: 163px;
+    margin-top: 21px;
+}
+.readed-history .text .more{
+    
+    height: 20px;
+    width: 20px;
+    background: url("./images/右箭头.png") no-repeat;
+    background-size: 100%;
+    position: absolute;
 }

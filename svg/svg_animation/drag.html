@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG 戳碟</title>
+</head>
+<body>
+    <svg class="volumn-controller" width="580" height="400" xmlns="http://www.w3.org" style="fill:none">
+        <path class="volumn-path" stroke="#000" d="m100,247c93,-128,284,-129 388,6"/>
+        <circle class="drag-button" r="12" cy="247" cx="100" stroke-width="1" stroke="#000" fill="#fff"/>
+    </svg>
+    <audio src="bgm.mp3" id="music" autoplay="true"></audio>
+    <script>
+     let volumnController = document.querySelector('.volumn-controller'),
+      volumnPath = volumnController.querySelector('.volumn-path'),
+      dragButton = volumnController.querySelector('.drag-button'),
+      music = document.querySelector('#music');
+      music.volume = 0.1;
+     let dragButtonPos = dragButton.getBoundingClientRect();
+    //  返回一个DOM元素 所在视窗的位置信息
+    console.log(dragButtonPos);
+       // parseInt取整  path的总点数
+    let pathTotalLength = parseInt(volumnPath.getTotalLength());
+ 
+    console.log(pathTotalLength);
+    
+    let points = [];
+    // 第一个点的x坐标
+    let starX = volumnPath.getPointAtLength(0).x;
+    // clientX-startX
+    for(let i=0;i<pathTotalLength;i++){
+        let p = volumnPath.getPointAtLength(i);
+        // 将每个path上的点的Y坐标储存，button随着偏移量计算后，取出y来赋给按钮    唯一的
+        points[Math.round(p.x) - starX] = Math.round(p.y);
+        
+    }
+    console.log(points);
+    function movePoint(event) {
+        // 鼠标指针相对于视窗的位置
+        // 圆环不是被拖动的   移动的
+        console.log(event.clientX, event.clientY);
+        let diffX = event.clientX - Math.round(dragButtonPos.left + 12);
+        diffX < 0 && (diffX = 0);
+        diffX >= points.length && (diffX = points.length-1);
+        // 右边界
+        dragButton.setAttribute('cx', diffX + starX);
+        dragButton.setAttribute('cy', points[diffX]);
+        // console.log(diffX);
+        // 往左拖有负值
+        let fb = (points[points.length-1]-points[diffX])/(points[points.length-1]-points[parseInt(points.length/2)]);
+        fb = fb >= 1 ? 1:fb;
+        music.volume = fb;
+    }
+    // 通过鼠标的偏移，让button走起来 cx cy值
+    dragButton.addEventListener('mousedown', function (event) {
+        document.addEventListener('mousemove', movePoint);
+    })
+    document.addEventListener('mouseup', function() {
+        document.removeEventListener('mousemove', movePoint);
+    })
+    </script>
+</body>
+</html>       
