@@ -1,0 +1,165 @@
+html {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: #f2f2f2;
+}
+header {
+  background: url("./images/mountain.png") 0 0 no-repeat;
+  background-size: 100%;
+}
+header .mask {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  overflow: hidden;
+}
+header .content {
+  width: 970px;
+  margin: 208px auto 0;
+  color: rgba(255,255,255,0.7);
+}
+header .content .hello .title {
+  font-size: 62px;
+  font-family: Montserrat-ExtraLight;
+  font-weight: 200;
+  color: #fff;
+  line-height: 72px;
+  text-align: center;
+}
+header .content .hello .text {
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 32px;
+  width: 766px;
+  margin: 86px auto 0;
+  text-align: center;
+}
+header .content .create {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 2px;
+  margin-top: 104px;
+  padding: 61px 100px 42px;
+}
+header .content .create .title {
+  text-align: center;
+  font-size: 16px;
+  line-height: 28px;
+}
+header .content .create .profile {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  margin: 19px auto 45px;
+}
+header .content .create .input {
+  display: flex;
+  justify-content: space-between;
+}
+header .content .create .input input {
+  outline: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  width: 292px;
+  height: 50px;
+  background: rgba(0,0,0,0);
+  border-radius: 2px;
+  color: #fff;
+  text-indent: 22px;
+}
+header .content .create .input input:last-child {
+  width: 125px;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  text-indent: 0;
+}
+.introduce {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.introduce .introduce-content {
+  text-align: center;
+  padding-top: 70px;
+}
+.introduce .introduce-content .title {
+  color: #000;
+  font-size: 14px;
+}
+.introduce .introduce-content .text {
+  width: 657px;
+  font-size: 42px;
+  font-weight: 200;
+  color: #141414;
+  line-height: 52px;
+  margin: 39px auto 0;
+}
+.introduce .section {
+  width: 986px;
+  margin: 85px auto 0;
+  padding-bottom: 102px;
+}
+.introduce .section .option {
+  box-sizing: border-box;
+  display: flex;
+}
+.introduce .section .option .icon {
+  margin-right: 31px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.introduce .section .option .iphoneIcon {
+  width: 38px;
+  height: 49px;
+  background: url("./images/Phone-Icon.png");
+}
+.introduce .section .option .Check-Icon {
+  width: 50px;
+  height: 37px;
+  background: url("./images/Check-Icon.png");
+}
+.introduce .section .section-line {
+  display: flex;
+  justify-content: space-between;
+}
+.product-container {
+  background-color: #fff;
+  width: 100%;
+}
+.product-container .product-des {
+  width: 975px;
+  margin: 0 auto;
+}
+.product-container .product-des .product-item {
+  display: flex;
+  align-items: center;
+}
+.product-container .product-des .product-item img {
+  width: 570px;
+  height: 350px;
+}
+.product-container .product-des .product-item .product-info {
+  width: 305px;
+  padding-left: 100px;
+}
+.product-container .product-des .product-item .product-info .title {
+  font-size: 20px;
+  font-weight: 300;
+  color: #141414;
+  line-height: 32px;
+  margin-bottom: 35px;
+}
+.product-container .product-des .product-item .product-info .text {
+  font-size: 16px;
+  font-weight: 200;
+  color: rgba(20,20,20,0.7);
+  line-height: 28px;
+}
+.product-container .product-des:last-child {
+  padding-right: 100px;
+  padding-left: 0;
+}

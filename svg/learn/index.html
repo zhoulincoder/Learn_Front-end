@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #l1 {
+            stroke: aqua;
+            stroke-width: 100px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let ol = document.getElementById('l1');
+            // ol.onmouseover = function () {
+            //     ol.style.stroke = 'yellow';
+            // };
+            // ol.onmousedown = function () {
+            //     ol.style.stroke = 'red';
+            // };
+
+            // ol.addEventListener('mouseover', function(){
+            //     ol.style.stroke = 'yellow';
+            // },false);
+            // ol.addEventListener('mouseout', function(){
+            //     ol.style.stroke = 'red';
+            // },false);
+            document.body.onmouseover=function(ev){
+                if(ev.target.tagName=='line'){
+                    
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <svg width="600" height="800">
+        <line x1="100" y1="200" x2="200" y2="100" id="l1"></line>
+    </svg>
+</body>
