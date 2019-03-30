@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const lists = [
+      {name:'lilei'},
+      {age: 32 },
+      {age: 3 },
+      [{like:'sleep'}]
+    ]
+    // var nameObj = lists[0];
+    // var ageObj = lists[1];
+    // a, b 获取数组第一项和第二项 ——数组结构
+    // const [a, b] = lists;
+    // // 只有c获取数组第三项
+    // const [ , , c] = lists;
+
+    const [ a, b, c,[i]] = lists;
+  </script>
+</body>
+</html>

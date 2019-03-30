@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // es6
+    function Person(nickName = '未知的') {
+      // es5
+      // if(!nickName) {
+      //   nickName = '未知昵称';
+      // }
+      this.nickName = nickName 
+      // || '未知昵称的';
+    }
+    const p1 = new Person('nickName');
+    const p2 = new Person();
+
+    //... 参数转为数组   rest 参数形式（...变量名)  
+    // 获取多余的参数 变量名是数组 把多余（剩余）的变量放入这个数组
+    function sum(a,...args) {
+      // Array.from(arguments)  将参数都转为数组
+      console.log(args)
+      // cosnole.log(arguments);
+    }
+    sum(2, 4, 6, 8);
+  </script>
+</body>
+</html>
