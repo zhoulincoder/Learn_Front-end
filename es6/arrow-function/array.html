@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // const ages = [18, 20, 30, 40, 10];
+    // const this_age = ages.find((age) => { return age === 10 });
+    // console.log(this_age);
+
+    // const this_age_index = ages.findIndex((age) => {
+    //   return age === 10
+    // });
+    // // 返回 满足该值的索引
+    // console.log(this_age, this_age_index)
+
+    const ages = [{
+      name:'lilei', age: 18
+    },{ name:'hanmeimei', age: 30},{ name:'hanmeimei1', age: 15},{ name:'hanmeimei3', age: 8}];
+    const person_age_index = ages.findIndex((per) => { return per.age == 15;})
+    const person_who = ages.find((per) => { return per.age > 15;})
+    console.log(person_who, person_age_index)
+  </script>
+</body>
+</html>

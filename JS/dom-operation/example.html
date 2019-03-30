@@ -122,10 +122,10 @@
     //       <td>保密</td>
     //     </tr>
     // info 为 {name: '我', age: 18, sex: m, dog: s}
-    function insertNode (info) {
+    function insertNode(info) {
       const keys = Object.keys(info);//返回一个数组['name' 'age' 'sex' 'dog']
       const tr = document.createElement('tr');
-      for(let i=0;i<keys.length;i++){
+      for (let i = 0; i < keys.length; i++) {
         const td = document.createElement('td');
         const text = document.createTextNode(info[keys[i]]);
         td.appendChild(text);
@@ -133,26 +133,26 @@
       }
       tableBody.appendChild(tr);
     }
-    
-    form.addEventListener('submit', (event) => {  
+
+    form.addEventListener('submit', (event) => {
       event.preventDefault();
       const name = nameInput.value;
       const age = ageInput.value;
       let sex = null;
       let dog = null;
-      for(let i=0;i<sexRadioNodes.length;i++){
-        if(sexRadioNodes[i].checked){
+      for (let i = 0; i < sexRadioNodes.length; i++) {
+        if (sexRadioNodes[i].checked) {
           sex = sexRadioNodes[i].value;
         }
       }
-      for(let i=0;i<dogRadioNodes.length;i++){
-        if(dogRadioNodes[i].checked){
+      for (let i = 0; i < dogRadioNodes.length; i++) {
+        if (dogRadioNodes[i].checked) {
           dog = dogRadioNodes[i].value;
         }
       }
       insertNode({
-        name:name,
-        age:age,
+        name: name,
+        age: age,
         sex,
         dog,
       })
