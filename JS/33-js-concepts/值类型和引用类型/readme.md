@@ -1,0 +1,3 @@
+- 基本类型 null undefined number string boolean  symbol
+- 复杂类型 object 
+        function array {}  ......

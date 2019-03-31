@@ -1,6 +1,6 @@
 #对象 Objects
 - 概要
-    - JS中的简单数据类型包括数字、字符串、布尔值、null、undefined值 Symbo object
+    - JS中的简单数据类型包括数字、字符串、布尔值、null、undefined值 Symbol object
     - 数组 函数 正则表达式都是对象
     - 对象是属性的容器
     - 对象通过引用来传递，永远不会被复制 var x=stooge;
