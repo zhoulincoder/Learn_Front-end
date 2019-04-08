@@ -8,6 +8,11 @@ body {
 .flex1 {
   flex: 1;
 }
+.section-til {
+  font-size: 17px;
+  color: #000;
+  padding-left: 0.4rem;
+}
 .nav {
   height: 1.067rem;
   font-size: 18px;
@@ -217,6 +222,81 @@ body {
 .page .section-expander .text-expander .text-expander__button .icon-chevron__down.up {
   transform: rotateZ(-135deg);
   transition: transform 0.5s;
+}
+.page .section-seperate .movie-celebrities {
+  width: 100%;
+  padding: 0.3rem 0.3rem 0.1rem 0.3rem;
+  overflow-x: scroll;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.page .section-seperate .movie-celebrities li {
+  text-align: center;
+  display: inline-block;
+  padding: 0.04rem;
+}
+.page .section-seperate .movie-celebrities li .link {
+  color: #000;
+}
+.page .section-seperate .movie-celebrities li .link .movie-celebrities__pic {
+  width: 1.7334rem;
+  height: 2.4rem;
+  margin: 0.05rem;
+}
+.page .section-seperate .movie-celebrities li .link .movie-celebrities__pic img {
+  width: 100%;
+}
+.page .section-seperate .movie-celebrities li .link span {
+  display: block;
+  font-style: 0.2rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.page .section-seperate .movie-celebrities li .link .movie-celebrities-rose {
+  color: #999;
+}
+.page .movie-booking {
+  padding-bottom: 0.2rem;
+}
+.page .movie-booking .weui-flex {
+  text-align: center;
+}
+.page .movie-booking .weui-flex .placeholder span {
+  font-size: 24px;
+  color: #d96a3d;
+}
+.page .movie-booking .weui-flex .placeholder p {
+  color: #bababb;
+  margin-top: 0.1rem;
+}
+.page .movie-photo .movie-photo__lists {
+  width: 100%;
+  padding: 0.3rem 0.3rem 0.2rem 0.3rem;
+  overflow-x: scroll;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container {
+  margin-right: 1.33333rem;
+  display: inline-block;
+  width: 2.4rem;
+  height: 1.867rem;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container .movie-celebrities__pic {
+  width: 100%;
+  height: 100%;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container .movie-celebrities__pic img {
+  width: 100%;
+  height: 100%;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container:first-child {
+  width: 3.3334rem;
+  height: 1.867rem;
+}
+.page .movie-photo .movie-photo__lists .stage-img-container:last-child {
+  margin-right: 0;
 }
 #toast {
   display: none;

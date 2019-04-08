@@ -85,6 +85,58 @@
       </div>
 
     </section>
+    <!-- section3 -->
+    <section class="section-seperate">
+      <p class="action-list section-til">演职人员</p>
+      <ul class="movie-celebrities">
+        <!-- <li>
+          <a href="#" class="link">
+            <div class="movie-celebrities__pic">
+              <img src="http://p1.meituan.net/moviemachine/6e06b1eee9a74c9573fdb8150fb8561271624.jpg" alt="">
+            </div>
+            <span class="movie-celebrities-nick">wqwqwq</span>
+            <span class="movie-celebrities-rose">wqwqwq</span>
+          </a>
+        </li> -->
+      </ul>
+    </section>
+    <!-- section4 -->
+    <section class="movie-booking section-seperate section-expander">
+      <p class="section-til">票房</p>
+      <div class="weui-flex">
+        <!-- <div class="weui-flex__item">
+          <div class="placeholder">
+            <span>2312</span>
+            <p>昨日票房排行</p>
+          </div>
+        </div>
+        <div class="weui-flex__item">
+          <div class="placeholder">
+            <span>232</span>
+            <p>首周票房(万)</p>
+          </div>
+        </div>
+        <div class="weui-flex__item">
+          <div class="placeholder">
+            <span>21212</span>
+            <p>累计票房(万)</p>
+          </div>
+        </div> -->
+      </div>
+    </section>
+    <!-- section5 -->
+    <section class="movie-photo section-seperate">
+      <p class="action-list section-til">视频和剧照</p>
+      <ul class="movie-photo__lists">
+        <li class="stage-img-container">
+          <a href="#" class="link">
+            <div class="movie-celebrities__pic" >
+              <!-- <img src="http://p1.meituan.net/moviemachine/6e06b1eee9a74c9573fdb8150fb8561271624.jpg" alt=""> -->
+            </div>
+          </a>
+        </li>
+      </ul>
+    </section>
     <!-- !toast -->
     <div id="toast">
       <div class="weui-mask_transparent"></div>
@@ -112,6 +164,9 @@
           $('.address-time .time').html(res.data.time)
           $('.movie-detail .date').html(res.data.date)
           $('.text-expander__content p').html(res.data.desc)
+          celebrity(res.data.person)
+          booking(res.data.booking)
+          pictures(res.data.pictures)
         }
       })
       function star(e) {
@@ -125,7 +180,7 @@
       }
 
       $('.movie-watch').click(function () {
-        if($(this).hasClass('active')){
+        if ($(this).hasClass('active')) {
           $('.movie-watch').removeClass('active')
           $('.movie-watch img').attr('src', './images/heart.png');
           $('#toast .weui-toast__content').html('已取消想看')
@@ -142,16 +197,58 @@
 
       //收放详情
       //点击方法和上面的区别
-      $('#text-expander').on('click', function() {
-          if( $('.text-expander__content').hasClass('close')) {
-            $('.text-expander__content').removeClass('close')
-            $('.icon-chevron__down').addClass('up')
-          } else {
-            $('.text-expander__content').addClass('close')
-            $('.icon-chevron__down').removeClass('up')
-          }
-        })
+      $('#text-expander').on('click', function () {
+        if ($('.text-expander__content').hasClass('close')) {
+          $('.text-expander__content').removeClass('close')
+          $('.icon-chevron__down').addClass('up')
+        } else {
+          $('.text-expander__content').addClass('close')
+          $('.icon-chevron__down').removeClass('up')
+        }
+      })
 
+      //演员表
+      function celebrity(e) {
+        for (let n of e) {
+          $('.movie-celebrities').append(`<li>
+          <a href="#" class="link">
+            <div class="movie-celebrities__pic">
+              <img src="${n.avatal}" alt="">
+            </div>
+            <span class="movie-celebrities-nick">${n.name}</span>
+            <span class="movie-celebrities-rose">${n.sort}</span>
+          </a>
+        </li>`)
+        }
+      }
+      function booking(z) {
+        // 方法一
+        $('.weui-flex').append(`<div class="weui-flex__item">
+          <div class="placeholder">
+            <span>${z['ranking']}</span>
+            <p>昨日票房排行</p>
+          </div>
+        </div>
+        <div class="weui-flex__item">
+          <div class="placeholder">
+            <span>${z['bookingWeek']}</span>
+            <p>首周票房(万)</p>
+          </div>
+        </div>
+        <div class="weui-flex__item">
+          <div class="placeholder">
+            <span>${z['bookingTotal']}</span>
+            <p>累计票房(万)</p>
+          </div>
+        </div>`)
+      }
+      function pictures(z) {
+        for(let n of z){
+          $('.movie-celebrities__pic').append(`<img src="${n}" alt="">`)
+        }
+        
+      }
+      // 
     })()
   </script>
 </body>

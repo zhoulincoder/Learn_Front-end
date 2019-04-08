@@ -5,7 +5,12 @@ html,body
   display flex
 .flex1
   flex 1
-
+.section-til
+  font-size 17px
+  color #000
+  padding-left .4rem
+// .action-list.section-til
+//   padding-left .4rem
 .nav
   height 1.067rem
   font-size 18px
@@ -45,6 +50,7 @@ html,body
   section
     background-color #fff
     border-bottom 1px solid #e5e5e5
+  //section1
   .movie-header
     padding 0
     background #f8f8f8
@@ -155,7 +161,7 @@ html,body
           img 
             width 18px
             height 18px
-  
+  // section2
   .section-seperate 
     padding-top 0.4rem
     margin-bottom .3rem
@@ -196,8 +202,70 @@ html,body
           transform rotateZ(-135deg) 
           transition transform .5s
           
-// 滑动  设置ul 无限宽   x轴
-
+  // 滑动  设置ul 无限宽   x轴   section3
+  .section-seperate
+    .movie-celebrities
+      width 100%
+      padding 0.3rem 0.3rem 0.1rem 0.3rem
+      overflow-x scroll
+      white-space nowrap
+      box-sizing border-box
+      li 
+        text-align center
+        display inline-block
+        padding 0.04rem
+        .link
+          color #000000
+          .movie-celebrities__pic
+            width 1.7334rem
+            height 2.4rem
+            margin 0.05rem
+            img 
+              width 100%
+          span
+            display block
+            font-style 0.2rem
+            text-overflow ellipsis
+            overflow hidden
+            white-space nowrap
+          .movie-celebrities-rose
+            color #999
+  //section4
+  .movie-booking
+    padding-bottom 0.2rem
+    .weui-flex
+      text-align center
+      .placeholder
+        span
+          font-size 24px
+          color #d96a3d
+        p
+          color #bababb
+          margin-top 0.1rem
+  // section5
+  .movie-photo
+    .movie-photo__lists
+      width 100%
+      padding .3rem .3rem .2rem .3rem
+      overflow-x scroll
+      white-space nowrap
+      box-sizing border-box
+      .stage-img-container
+        margin-right 1.33333rem
+        display inline-block
+        width 2.4rem
+        height 1.867rem
+        .movie-celebrities__pic
+          width 100%
+          height 100%
+          img 
+            width 100%
+            height 100%
+        &:first-child
+          width 3.3334rem
+          height 1.867rem
+        &:last-child
+          margin-right 0
 
 
 
