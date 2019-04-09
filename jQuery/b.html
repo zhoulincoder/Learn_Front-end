@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>司徒正美</title>
+  <style>
+    *{margin: 0; padding: 0; }
+
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    function JQueryEle(ele) {
+      this.ele = ele;
+    }
+    JQueryEle.prototype.html = function(str) {
+      this.ele.innerHTML = str;
+    }
+    
+    const jQuery = {}; //命名空间  做框架名字叫jQuery 
+    jQuery.wrapper = function(ele) {
+      //将ele对象，封装于此 
+      //ele querySelector只有innerHTML 没有html
+      //jquery 里面的结点对象，不是简单的HTML结点，而是jquery对象
+      const jqueryEle = new JQueryEle(ele);   
+      return jqueryEle;
+    }
+    
+    //浏览器页面渲染机制  重绘？回流？
+    // DOM Ready事件
+    function $(selector) {
+      if(typeof selector === 'function'){
+        document.addEventListener('DOMContentLoaded', selector);
+      } else if(typeof selector === 'string') {
+        // html();
+        // $('#root').html('')
+        // $() 函数  运行结果，是什么类型    从而调用prototype方法（没有html方法）   编写一个return ele   ele上有html()
+        const ele = document.querySelector(selector);
+        if(ele) {
+          // 从结果反推的能力
+          return jQuery.wrapper(ele);
+        }
+        // if(ele) {
+        //   //一个类 类上有html
+        //   return new JQueryEle(ele);
+        // }
+      }
+    }
+    $(function () {
+      console.log('DOM Ready');
+      $('#root').html('<p>我要去云南，我要去越南</p>');
+    })
+  </script>
+</body>
+</html>
