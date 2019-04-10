@@ -1,36 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   <script>
     var xhr = null;
-     
+
     if (window.XMLHttpRequest) {
       // 在不重新加载页面的情况下更新网页
       // 在页面已加载后从服务器请求数据
       // 在页面已加载后从服务器接收数据
       // 在后台向服务器发送数据 
       xhr = new XMLHttpRequest();
-    }else {
-      xhr = new ActiveXObject ("Microsoft.XMLHTTP");
+    } else {
+      xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    xhr.open('get','mock.json',true);
+
+    xhr.open('get', './mock.json', true);
     //    该次请求的类型  数据路径    数据同步还是异步(true)
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send();
-    
-    //console.log(xhr.readyState, xhr.status);//4服务器状态吗  200请求成功
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        console.log(xhr.responseText);
+
+    var p = new Promise((resolve, reject) => {
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          console.log(xhr.responseText);
+          resolve(xhr.responseText)
+        }
       }
+    })
+    //console.log(xhr.readyState, xhr.status);//4服务器状态吗  200请求成功
+
+
+    function xq() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log("猛哥要相亲了");
+          resolve('猛哥相亲完成');
+        }, 1000);
+      })
     }
-    console.log(123232)
+
+    // xq();
+    function marry() {
+      setTimeout( () => {
+        console.log("猛哥结婚了")
+      }, 500)
+    }
+
+    p
+      .then(xq)
+      .then(marry)
+      .catch(() => {
+        console.log("猛哥逃婚了")
+      })
   </script>
 </body>
+
 </html>
