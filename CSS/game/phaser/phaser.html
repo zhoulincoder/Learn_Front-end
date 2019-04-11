@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mummy</title>
+  <script src="https://cdn.bootcss.com/phaser/2.6.2/phaser.min.js"></script>
+
+</head>
+<body>
+  <div class="game"></div>
+  <script>
+    // var Phaser = {};
+    // Phaser.Game = function() {}
+    // game 就是一个对象
+    var width = 800, height = 600;
+    var game = new Phaser.Game(width, height, Phaser.AUTO, '#game', {preload:preload,create:create,update:update});
+    function preload() {
+      // 预加载
+      game.load.image('lazur', './bg.png');
+      game.load.spritesheet('mummy', './mummy.png', 37, 45, 18);  //宽 高 帧
+    }
+    var back, mummy, anim, loopText;
+    function create() {
+      // 处理背景 精灵到位  动起来
+      back = game.add.image(0, -400, 'lazur');
+      back.scale.set(4);
+      back.smoothed = false;
+
+      mummy = game.add.sprite(50, 340, 'mummy',10);
+      mummy.smoothed = false;
+      mummy.scale.set(5);
+
+      anim = mummy.animations.add('walk');
+      anim.onStart.add(animationStarted, this);
+      anim.onLoop.add(animationLooped, this);
+      anim.onComplete.add(animationStopped, this);
+      anim.play(10, true);
+    }
+    function animationLooped(sprite, animation) {
+      if(animation.loopCoount === 1 ){
+        loopText = game.add.text(32, 64, 'Animation looped', {fill:'white'});
+      } else {
+        animation.loop = false;
+      }
+    }
+    function animationStopped(sprite, animation) {
+
+    }
+    function animationStarted(sprite, animation) {
+      game.add.text(32, 32, 'Animation Started', {fill:'white'});
+    }
+    function update() {
+      if(anim.isPlaying) {
+        back.x -= 1;
+      }  
+    }
+  </script>
+</body>
+</html>
