@@ -8,8 +8,11 @@
     overflow hidden
   .header > img 
     width 98px
+  .header
+    transition all .4s
   .menu
     margin-left 103px  
+    transition all .4s
   .menu .item
     display inline-block
     font-size 18px
@@ -27,6 +30,18 @@
     // 让搜索图标靠右，父盒子占满剩余的空间，图标居右
     flex 1;
     text-align right 
+  .search-form
+    position absolute
+    transform translateY(-120px)
+    opacity 0
+    transition all .5s 
+  .searching .search-form
+    opacity 1
+    transform translateY(0px)
+  .searching
+    .header, .menu, .menu-icon
+      transform translateY(80px)
+      opacity 0
 //媒体查询
 @media only screen and (min-width: 767px) 
   .ui.navbar
