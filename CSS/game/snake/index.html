@@ -26,6 +26,7 @@
     let dx = 10, dy = 0;
     clearCanvas();  //每次刷新画布
     drawSnake();  //画蛇
+
     setInterval(() => {
       advanceSnake();
       clearCanvas();  //每次刷新画布
@@ -67,21 +68,21 @@
       const DOWN_KEY = 40;
       const goingRight = dx === 10;
       const goingLeft = dx === -10;
-      const goingUp = dx === -10;
-      const goingDown = dx === 10;
-      if(keyCode === LEFT_KEY && !goingRight){
+      const goingUp = dy === -10;
+      const goingDown = dy === 10;
+      if(keyCode === LEFT_KEY && !goingRight ){
         dx = -10;
         dy = 0;  //避免倾斜移动
       }
-      if(keyCode === RIGHT_KEY && !goingLeft){
+      if(keyCode === RIGHT_KEY && !goingLeft ){
         dx = 10;
         dy = 0;  
       }
-      if(keyCode === UP_KEY && !goingDown){
+      if(keyCode === UP_KEY && !goingDown  ){
         dx = 0;
         dy = -10;  
       }
-      if(keyCode === DOWN_KEY && !goingUp){
+      if(keyCode === DOWN_KEY && !goingUp ){
         dx = 0;
         dy = 10;  
       }
