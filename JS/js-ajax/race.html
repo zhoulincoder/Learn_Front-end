@@ -30,7 +30,7 @@
     var p = new Promise((resolve, reject) => {
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-          console.log(xhr.responseText);
+          // console.log(xhr.responseText);
           resolve(xhr.responseText);
         }
       }
@@ -43,7 +43,7 @@
         setTimeout(() => {
           console.log("猛哥要相亲了");
           resolve('猛哥相亲完成');
-        }, 1000);
+        }, 3);
       })
     }
 
@@ -53,7 +53,7 @@
         setTimeout(() => {
           console.log("猛哥结婚了");
           resolve('猛哥结婚完成');
-        }, 2000);
+        }, 500);
       })
     }
     function child() {
@@ -66,9 +66,10 @@
     //   .catch(() => {
     //     console.log("猛哥逃婚了")
     //   })
-    //放在all的方法没有顺序，但是先执行完的先显示
-    //要执行child all里面全部必须执行完
-    Promise.all([p, xq(), marry()]).then(child)
+    
+    Promise.race([p, xq(), marry()]).then((value)  => {
+      console.log(value,'---');  //value 指的是最快执行完的函数 resolve
+    })
   </script>
 </body>
 
