@@ -137,6 +137,60 @@
         </li>
       </ul>
     </section>
+    <!-- section6 -->
+    <div class="section-seperate section-expander">
+      <p class="section-til pos_r">讨论
+        <span class="join-comment">参与讨论</span>
+      </p>
+      <ul class="movie-comment">
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>全部</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>好评</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>差评</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>点映</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>购票</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>认证作者</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+        <li class="comment-item">
+          <div class="comment-item__sort">
+            <span>同城</span>
+            <span class="comment-item__num"></span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- section7 -->
+    <!-- <div class="section-seperate section-expander">
+      <p class="section-til"></p>
+    </div> -->
     <!-- !toast -->
     <div id="toast">
       <div class="weui-mask_transparent"></div>
@@ -166,7 +220,7 @@
           $('.text-expander__content p').html(res.data.desc)
           celebrity(res.data.person)
           booking(res.data.booking)
-          pictures(res.data.pictures)
+          // pictures(res.data.pictures)
         }
       })
       function star(e) {
@@ -242,13 +296,13 @@
           </div>
         </div>`)
       }
-      function pictures(z) {
-        for(let n of z){
-          $('.movie-celebrities__pic').append(`<img src="${n}" alt="">`)
-        }
+      // function pictures(z) {
+      //   for(let m of z){
+      //     $('movie-photo__lists stage-img-container .movie-celebrities__pic').append(`<img src="${m}" alt="">`)
+      //   }
         
-      }
-      // 
+      // }
+      
     })()
   </script>
 </body>
