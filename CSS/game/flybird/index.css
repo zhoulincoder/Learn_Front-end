@@ -1,0 +1,51 @@
+#wrapBg{
+  width: 343px;
+  height: 480px;
+  margin: 0 auto;
+  background-image: url(./img/bg.jpg);
+  top: 100%;
+  position: relative;
+  overflow: hidden;
+}
+#headTitle{
+  width: 236px;
+  height: 77px;
+  background-image: url(./img/head.jpg);
+  position: absolute;
+  left: 55px;
+  top: 120px;
+}
+#headBird{
+  float: right;
+  margin-top: 25px;
+
+}
+#startBtn{
+  width: 85px;
+  height: 29px;
+  padding: 0;
+  margin: 0;
+  background-image: url(./img/start.jpg);
+  position: absolute;
+  left: 129px;
+  top: 250px;
+  cursor: pointer;
+  border: 0;
+  
+}
+#grassLand1{
+  height: 14px;
+  width: 343px;
+  background-image: url(./img/banner.jpg);
+  position: absolute;
+  top: 423px;
+}
+#grassLand2{
+  height: 14px;
+  width: 343px;
+  background-image: url(./img/banner.jpg);
+  position: absolute;
+  top: 423px;
+  left: 343px;
+  
+}
