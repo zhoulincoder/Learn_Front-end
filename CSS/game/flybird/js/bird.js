@@ -1,7 +1,7 @@
 var bird = {
   flyTimer: null, //小鸟飞翔的定时器
   wingTimer: null, // 小鸟翅膀摆动的定时器
-
+  //创建小鸟
   div:document.createElement("div"),
   showBird:function(parentObj) {
     this.div.style.width = "40px";
@@ -12,13 +12,11 @@ var bird = {
     this.div.style.left = "50px";
     this.div.style.top = "200px";
     this.div.style.zIndex = "1";
-
     parentObj.appendChild(this.div); // 将小鸟插入到父容器中
   },
-
   fallSpeed: 0, //小鸟下落的速度
   flyBird: function() { //控制小鸟飞翔下落的函数
-    bird.flyTimer = setInterval(fly, 40)
+    bird.flyTimer = setInterval(fly, 40);
     function fly() {
       bird.div.style.top = bird.div.offsetTop + bird.fallSpeed++ + "px";
       if (bird.div.offsetTop < 0) {
@@ -42,7 +40,7 @@ var bird = {
     function wing() {
       if (bird.fallSpeed > 0) {
         bird.div.style.backgroundImage = down[i++];
-        if (i == 2) {i = 0}
+        if (i == 2) {i = 0}//在两张图中切换
       }
       if (bird.fallSpeed < 0) {
         bird.div.style.backgroundImage = up[j++];
