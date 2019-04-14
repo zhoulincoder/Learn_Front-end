@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <title>贪吃蛇</title>
+  <meta name="keywords" content="贪吃蛇" />
+  <style type="text/css">
+    * {
+      margin: 0;
+    }
+
+    .d-canvas {
+      width: 450px;
+      height: 450px;
+      background: #ffff00;
+      border: 10px solid #00ffff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="d-canvas">
+    <canvas id="can" width="450" height="450">
+    </canvas>
+  </div>
+  <script type="text/javascript">
+    var can = document.getElementById("can");
+    //创建 context 对象
+    var ctx = can.getContext("2d");
+    var snake = [];//蛇
+    var width = 15;//宽度
+    var startwidth = 6;//蛇开始的长度
+    var foodX;//食物X坐标
+    var foodY;//食物Y坐标
+    var catlog = 3;//表示方向
+    //画格子
+    function drawRect() {
+      for (var i = 0; i <= 30; i++) {
+        ctx.beginPath();
+        ctx.moveTo(width * i, 0);
+        ctx.lineTo(width * i, 450);
+        ctx.moveTo(0, width * i);
+        ctx.lineTo(450, width * i);
+        ctx.closePath();
+        ctx.stroke();
+      }
+    }
+    //初始化蛇
+    function strat() {
+      for (var i = 0; i < startwidth; i++) {
+        snake[i] = { x: i * width, y: 0 };
+      }
+    }
+    //画蛇
+    function newSnake() {
+      ctx.fillStyle = "#000";
+      for (var i = 0; i < startwidth; i++) {
+        if (i == startwidth - 1)
+          ctx.fillStyle = "#f00";
+        ctx.fillRect(snake[i].x, snake[i].y, 15, 15);
+      }
+    }
+    //添加食物
+    function addFood() {
+      ctx.fillStyle = "#00ff33";
+      foodX = Math.floor(Math.random() * 30) * 15;
+      console.log(foodX);
+      foodY = Math.floor(Math.random() * 30) * 15;
+      console.log(foodY);
+      for (var i = 0; i < startwidth; i++) {
+        if (snake[i].x == foodX && snake[i].y == foodY)
+          addFood();
+      }
+      ctx.fillRect(foodX, foodY, 15, 15);
+
+    }
+    //蛇移动
+    function move() {
+      ctx.fillStyle = "#000";
+      var top;
+      switch (catlog) {
+        case 1:
+          snake.push({ x: snake[startwidth - 1].x - 15, y: snake[startwidth - 1].y });
+          ctx.fillRect(snake[startwidth - 1].x, snake[startwidth - 1].y, 15, 15);
+          ctx.fillStyle = "#f00";
+          ctx.fillRect(snake[startwidth].x, snake[startwidth].y, 15, 15);
+          isDeath();
+          if (!isEat()) {
+            top = snake.shift();
+            ctx.clearRect(top.x, top.y, 15, 15);
+          } else {
+            addFood();
+          }
+          break;
+        case 2:
+          snake.push({ x: snake[startwidth - 1].x, y: snake[startwidth - 1].y - 15 });
+          ctx.fillRect(snake[startwidth - 1].x, snake[startwidth - 1].y, 15, 15);
+          ctx.fillStyle = "#f00";
+          ctx.fillRect(snake[startwidth].x, snake[startwidth].y, 15, 15);
+          isDeath();
+          if (!isEat()) {
+            top = snake.shift();
+            ctx.clearRect(top.x, top.y, 15, 15);
+          } else {
+            addFood();
+          }
+          break;
+        case 3:
+          snake.push({ x: snake[startwidth - 1].x + 15, y: snake[startwidth - 1].y });
+          ctx.fillRect(snake[startwidth - 1].x, snake[startwidth - 1].y, 15, 15);
+          ctx.fillStyle = "#f00";
+          ctx.fillRect(snake[startwidth].x, snake[startwidth].y, 15, 15);
+          isDeath();
+          if (!isEat()) {
+            top = snake.shift();
+            ctx.clearRect(top.x, top.y, 15, 15);
+          } else {
+            addFood();
+          }
+          break;
+        case 4:
+          snake.push({ x: snake[startwidth - 1].x, y: snake[startwidth - 1].y + 15 });
+          ctx.fillRect(snake[startwidth - 1].x, snake[startwidth - 1].y, 15, 15);
+          ctx.fillStyle = "#f00";
+          ctx.fillRect(snake[startwidth].x, snake[startwidth].y, 15, 15);
+          isDeath();
+          if (!isEat()) {
+            top = snake.shift();
+            ctx.clearRect(top.x, top.y, 15, 15);
+          } else {
+            addFood();
+          }
+          break;
+      }
+      isDeath();
+      drawRect();
+    }
+    //判断蛇是否吃了食物
+    function isEat() {
+      if (foodX == snake[startwidth - 1].x && foodY == snake[startwidth - 1].y) {
+        startwidth++;
+        return true;
+        console.log(startwidth);
+      }
+      return false;
+    }
+    //判断是否死了
+    function isDeath() {
+      //一种是撞墙死，一种自己撞自己死
+      if (snake[startwidth - 1].x > 450 || snake[startwidth - 1].x < 0 || snake[startwidth - 1].y > 450 || snake[startwidth - 1].y < 0) {
+        alert("撞墙死了");
+        window.location.reload();
+      }
+      for (var i = 0; i < startwidth - 1; i++) {
+        if (snake[i].x == snake[startwidth - 1].x && snake[i].y == snake[startwidth - 1].y) {
+          alert("自已咬自己，死了");
+          window.location.reload();
+        }
+      }
+    }
+    //获取键盘输入值
+    window.onkeydown = function (e) {
+      switch (e.keyCode) {
+        case 37: catlog = 1; break;//左
+        case 38: catlog = 2; break;//上
+        case 39: catlog = 3; break;//右
+        case 40: catlog = 4; break;//下
+      }
+    }
+    //加载页面
+    window.onload = function () {
+      strat();
+      drawRect();
+      newSnake();
+      addFood();
+      setInterval(move, 200);
+    }
+  </script>
+</body>
+
+</html>

@@ -50,6 +50,7 @@
     function drawSnakePart(part) {
       ctx.fillstyle = 'lightgreen';
       ctx.strokeStyle = 'darkgreen';
+      console.log(ctx)
       console.log(part);
       ctx.fillRect(part.x, part.y, 10, 10);
       ctx.strokeRect(part.x, part.y, 10, 10);
@@ -60,34 +61,34 @@
       ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
       ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
     }
-    function changeDirection(event) {
-      const keyCode = event.keyCode;
-      const LEFT_KEY = 37;
-      const RIGHT_KEY = 39;
-      const UP_KEY = 38;
-      const DOWN_KEY = 40;
-      const goingRight = dx === 10;
-      const goingLeft = dx === -10;
-      const goingUp = dy === -10;
-      const goingDown = dy === 10;
-      if(keyCode === LEFT_KEY && !goingRight ){
-        dx = -10;
-        dy = 0;  //避免倾斜移动
-      }
-      if(keyCode === RIGHT_KEY && !goingLeft ){
-        dx = 10;
-        dy = 0;  
-      }
-      if(keyCode === UP_KEY && !goingDown  ){
-        dx = 0;
-        dy = -10;  
-      }
-      if(keyCode === DOWN_KEY && !goingUp ){
-        dx = 0;
-        dy = 10;  
-      }
-    }
-    document.addEventListener('keydown', changeDirection);
+    // function changeDirection(event) {
+    //   const keyCode = event.keyCode;
+    //   const LEFT_KEY = 37;
+    //   const RIGHT_KEY = 39;
+    //   const UP_KEY = 38;
+    //   const DOWN_KEY = 40;
+    //   const goingRight = dx === 10;
+    //   const goingLeft = dx === -10;
+    //   const goingUp = dy === -10;
+    //   const goingDown = dy === 10;
+    //   if(keyCode === LEFT_KEY && !goingRight ){
+    //     dx = -10;
+    //     dy = 0;  //避免倾斜移动
+    //   }
+    //   if(keyCode === RIGHT_KEY && !goingLeft ){
+    //     dx = 10;
+    //     dy = 0;  
+    //   }
+    //   if(keyCode === UP_KEY && !goingDown  ){
+    //     dx = 0;
+    //     dy = -10;  
+    //   }
+    //   if(keyCode === DOWN_KEY && !goingUp ){
+    //     dx = 0;
+    //     dy = 10;  
+    //   }
+    // }
+    // document.addEventListener('keydown', changeDirection);
     // function
   </script>
 </body>
