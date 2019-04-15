@@ -2,6 +2,20 @@ html,
 body {
   width: 100%;
 }
+.movie-celebrities::-webkit-scrollbar,
+.movie-stages::-webkit-scrollbar {
+  height: 0 !important;
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.text-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 .flex {
   display: flex;
 }
@@ -11,13 +25,15 @@ body {
 .section-til {
   font-size: 17px;
   color: #000;
+}
+.action-list.section-til {
   padding-left: 0.4rem;
 }
 .nav {
   height: 1.067rem;
   font-size: 18px;
   text-align: center;
-  background-color: #1e2025;
+  background-color: #e54847;
   padding: 6px;
   box-sizing: border-box;
 }
@@ -43,7 +59,7 @@ body {
   display: inline-block;
 }
 .page {
-  background-color: #f4f4f4;
+  background: #f4f4f4;
   position: relative;
   z-index: 1;
   margin: 0;
@@ -54,7 +70,7 @@ body {
   font: 14px/1.5 Arial, Helvetica, sans-serif;
 }
 .page section {
-  background-color: #fff;
+  background: #fff;
   border-bottom: 1px solid #e5e5e5;
 }
 .page .movie-header {
@@ -73,28 +89,30 @@ body {
 }
 .page .movie-header .movie .movie-background,
 .page .movie-header .movie .movie-filter {
-  position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
+  width: 100%;
+  position: absolute;
   left: 0;
+  bottom: 0;
 }
 .page .movie-header .movie .movie-background {
   z-index: 0;
   filter: blur(0.6rem);
-  background-image: url("./images/header-bg.jpg");
+  -webkit-filter: blur(0.6rem);
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 40%;
+  background-image: url("./images/header-bg.jpg");
 }
 .page .movie-header .movie .movie-filter {
   background-color: #40454d;
   opacity: 0.55;
 }
 .page .movie-header .movie .movie-container {
-  overflow: hidden;
-  position: relative;
   z-index: 1;
+  position: relative;
+  overflow: hidden;
 }
 .page .movie-header .movie .movie-container .movie-cover {
   float: left;
@@ -114,14 +132,14 @@ body {
 }
 .page .movie-header .movie .movie-container .movie-cover:after {
   content: '';
-  width: 0.667rem;
-  height: 0.667rem;
-  border-radius: 100%;
+  right: 0.1rem;
+  bottom: 0.1rem;
   background-image: url("./images/bofang.png");
   background-size: 100% auto;
   position: absolute;
-  right: 0.1rem;
-  bottom: 0.1rem;
+  width: 0.667rem;
+  height: 0.667rem;
+  border-radius: 100%;
   opacity: 0.7;
 }
 .page .movie-header .movie .movie-container .movie-content {
@@ -134,7 +152,7 @@ body {
 }
 .page .movie-header .movie .movie-container .movie-content .movie-ename {
   font-size: 12px;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.2rem;
 }
 .page .movie-header .movie .movie-container .movie-content .movie-score {
   font-size: 12px;
@@ -155,7 +173,7 @@ body {
   opacity: 0.7;
 }
 .page .movie-header .movie .movie-container .movie-content .movie-detail p {
-  margin-top: 0.14rem;
+  margin-bottom: 0.14rem;
 }
 .page .movie-header .movie .operating {
   margin-top: 0.5rem;
@@ -163,7 +181,7 @@ body {
 .page .movie-header .movie .operating div {
   border: 1px solid rgba(255,255,255,0.4);
   background-color: rgba(255,255,255,0.4);
-  font-style: 14px;
+  font-size: 14px;
   color: #fff;
   position: relative;
   z-index: 2;
@@ -194,8 +212,8 @@ body {
   border-top: 1px solid #e5e5e5;
 }
 .page .section-expander {
-  padding-left: 0.4em;
-  padding-right: 0.4em;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
 }
 .page .section-expander .text-expander .text-expander__content.close {
   min-height: 65px;
@@ -211,17 +229,17 @@ body {
   text-align: center;
 }
 .page .section-expander .text-expander .text-expander__button .icon-chevron__down {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border: 1px solid #aaa;
   display: inline-block;
+  transform: rotateZ(45deg);
   border-width: 0 1px 1px 0;
   box-sizing: border-box;
-  transform: rotateZ(45deg);
+  transition: transform 0.5s;
 }
 .page .section-expander .text-expander .text-expander__button .icon-chevron__down.up {
   transform: rotateZ(-135deg);
-  transition: transform 0.5s;
 }
 .page .section-seperate .movie-celebrities {
   width: 100%;
@@ -248,12 +266,12 @@ body {
 }
 .page .section-seperate .movie-celebrities li .link span {
   display: block;
-  font-style: 0.2rem;
+  font-size: 0.2rem;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-.page .section-seperate .movie-celebrities li .link .movie-celebrities-rose {
+.page .section-seperate .movie-celebrities li .link .movie-celebrities-roles {
   color: #999;
 }
 .page .movie-booking {
@@ -267,7 +285,7 @@ body {
   color: #d96a3d;
 }
 .page .movie-booking .weui-flex .placeholder p {
-  color: #bababb;
+  color: #bababa;
   margin-top: 0.1rem;
 }
 .page .movie-photo .movie-photo__lists {
@@ -278,7 +296,7 @@ body {
   box-sizing: border-box;
 }
 .page .movie-photo .movie-photo__lists .stage-img-container {
-  margin-right: 0.133333rem;
+  margin-right: 0.13333rem;
   display: inline-block;
   width: 2.4rem;
   height: 1.867rem;
@@ -298,10 +316,10 @@ body {
 .page .movie-photo .movie-photo__lists .stage-img-container:last-child {
   margin-right: 0;
 }
-.section-seperate .pos_r {
+.page .pos_r {
   position: relative;
 }
-.section-seperate .pos_r .join-comment {
+.page .pos_r .join-comment {
   position: absolute;
   font-size: 14px;
   background-color: #e54847;
@@ -312,11 +330,11 @@ body {
   right: 0;
   transform: translateY(-50%);
 }
-.section-seperate .movie-comment {
+.page .movie-comment {
   overflow: hidden;
   padding: 0.2rem 0 0.4rem 0;
 }
-.section-seperate .movie-comment .comment-item {
+.page .movie-comment .comment-item {
   float: left;
   border: 1px solid #aaa;
   border-radius: 20px;
@@ -324,11 +342,72 @@ body {
   margin-top: 0.2rem;
   margin-right: 0.3rem;
 }
-.section-seperate .movie-comment .comment-item .comment-item__sort {
+.page .movie-comment .comment-item .comment-item__sort {
   font-size: 0;
 }
-.section-seperate .movie-comment .comment-item .comment-item__sort span {
+.page .movie-comment .comment-item .comment-item__sort span {
   font-size: 14px;
+}
+.page .chosen-comment__item .item-avatal {
+  float: left;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.page .chosen-comment__item .item-avatal img {
+  width: 100%;
+}
+.page .chosen-comment__item .item-detail {
+  overflow: hidden;
+  padding-left: 0.3rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 0.4rem;
+}
+.page .chosen-comment__item .item-detail__hd div span {
+  vertical-align: middle;
+}
+.page .chosen-comment__item .item-detail__hd div .level {
+  display: inline-block;
+  width: 0.9735rem;
+  height: 0.4534em;
+}
+.page .chosen-comment__item .item-detail__hd div .level img {
+  width: 100%;
+}
+.page .chosen-comment__item .item-detail__hd .item-score__desc {
+  color: #9b9b9b;
+  font-size: 12px;
+}
+.page .chosen-comment__item .item-detail .item-detail__content {
+  margin: 0.15rem 0;
+}
+.page .chosen-comment__item .item-detail .item-detail__footer {
+  margin-top: 0.4rem;
+}
+.page .chosen-comment__item .item-detail .item-detail__footer .item-detail__time {
+  color: #9b9b99;
+}
+.page .chosen-comment__item .item-detail .item-detail__footer .pull-right {
+  float: right;
+}
+.page .chosen-comment__item .item-detail .item-detail__footer .pull-right .link {
+  color: #757575;
+  border: 1px solid #eee;
+  margin-left: 0.3rem;
+  padding: 0.12rem 0.3rem 0.16rem;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.page .chosen-comment__item .item-detail .item-detail__footer .pull-right .link .icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+}
+.page .chosen-comment__item .item-detail .item-detail__footer .pull-right .link span {
+  vertical-align: middle;
 }
 #toast {
   display: none;
