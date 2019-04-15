@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://api.map.baidu.com/api?v=2.0&ak=RVh8OPxX5neXt7APE6uxGnkIPIUx0P5K"></script>
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #allmap {
+      width: 1000px;
+      height: 800px;
+    }
+  </style>
+</head>
+
+<body>
+  <P>
+    <button onclick="getaddress()">我在哪</button>
+  </P>
+  <div id="out"></div>
+  <script>
+    var latitude;
+    var longitude;
+    function getaddress() {
+      var out = document.getElementById('out');
+      if (!navigator.geolocation) {
+        // 如果浏览器不支持geolocation
+        out.innerHTML = '滚去下载新版本浏览器';
+        return;
+      }
+
+      function success(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        out.innerHTML = '<p>你的纬度：' + latitude + '</br> 你的经度：' + longitude + '</p>';
+        var myGeo = new BMap.Geocoder();
+        //根据坐标得到地址描述
+        myGeo.getLocation(new BMap.Point(longitude, latitude), function (result) {
+          if (result) {
+            alert(result.address);
+          }
+        });
+        console.log('您的位置：' + longitude + ',' + latitude);
+      }
+
+      function error() {
+        out.innerHTML = '无法获取你的位置';
+      }
+      out.innerHTML = '<p>loading...</p>';
+      navigator.geolocation.getCurrentPosition(success, error);
+
+
+
+    }
+  </script>
+</body>
+
+</html>
