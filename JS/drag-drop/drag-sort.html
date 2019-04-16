@@ -26,6 +26,15 @@
       height: 20px;
       border-bottom: 1px solid #ddd;
     }
+    #recycle{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 70px;
+      text-align: center;
+      line-height:70px;
+      background-color: #ddd;
+    }
   </style>
 </head>
 
@@ -40,18 +49,19 @@
       <div class="list" draggable="true">这是列表6的标题</div>
       <div class="list" draggable="true">这是列表7的标题</div>
     </div>
+    <div id="recycle" draggable="true">回收站</div>
   </div>
   <script>
+    const recycle = document.getElementById('recycle')
+    
     const lists = document.querySelectorAll('.list');
     // 记录源对象
     let srcDiv = null;
-    for (let i = 0, length = lists.length;
-      i < length;
-      i++) {
+    for (let i = 0, length = lists.length; i < length; i++) {
       let list = lists[i];
       list.addEventListener('dragstart', function () {
         srcDiv = this;
-        this.style.backgroundColor = '#f8f8f8';
+        this.style.backgroundColor = 'red';
       })
       list.addEventListener('dragend', function (event) {
         this.style.backgroundColor = '#fff';
@@ -70,6 +80,17 @@
         }
       })
     }
+    recycle.addEventListener('drop', function(event) {
+      console.log('drop')
+      srcDiv.parentNode.removeChild(srcDiv);
+    })
+    document.addEventListener('drop', function(event) {
+      event.preventDefault();
+    })
+    document.addEventListener('dragover', function(event) {
+      event.preventDefault();
+    })
+  
   </script>
 </body>
 
