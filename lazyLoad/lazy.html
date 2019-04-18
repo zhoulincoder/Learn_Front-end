@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>懒加载</title>
+  <style>
+    .image-item {
+      display: block;
+      margin-bottom: 50px;
+      height: 200px;
+      /* 懒加载一定要设置高度 */
+    }
+  </style>
+</head>
+
+<body>
+  <img src="" class="image-item" lazyload="true" data-original="http://img1.3lian.com/2015/a1/149/d/129.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://img15.3lian.com/2015/f2/57/d/96.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://img2.3lian.com/2014cf/f6/146/d/93.jpg" />
+  <img src="" class="image-item" lazyload="true"
+    data-original="http://s9.knowsky.com/sc/mjpg/92/2013082412182770364.jpg" />
+  <img src="" class="image-item" lazyload="true"
+    data-original="http://pic1.win4000.com/wallpaper/b/546441f1d83c2.jpg" />
+  <img src="" class="image-item" lazyload="true"
+    data-original="http://www.officedoyen.com/uploads/allimg/140929/1-140929230255201.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://img1.3lian.com/2015/w22/38/d/82.jpg" />
+  <img src="" class="image-item" lazyload="true"
+    data-original="http://b.zol-img.com.cn/desk/bizhi/image/4/960x600/1393553860400.jpg" />
+  <img src="" class="image-item" lazyload="true" data-original="http://img2.3lian.com/2014cf/f6/146/d/92.jpg" />
+  <img src="" class="image-item" lazyload="true"
+    data-original="http://pic1.win4000.com/wallpaper/2018-01-09/5a547c0cb840c.jpg" />
+  <img src="" class="image-item" lazyload="true"
+    data-original="http://pic6.nipic.com/20100322/4483948_105858439501_2.jpg" />
+  <img src="" class="image-item" lazyload="true"
+    data-original="http://img3.xiazaizhijia.com/walls/20160927/1440x900_dec5fdacc3059ca.jpg" />
+  <script>
+    var viewheight = document.documentElement.clientHeight
+    // 获取当前可视区域的高度
+    function lazyload() {
+      var eles = document.querySelectorAll('img[data-original][lazyload]')
+      console.log(eles);
+      Array.prototype.forEach.call(eles, function (item, index) {//遍历原型链上的属性
+        var rect
+        if (item.dataset.original === '') return;
+        rect = item.getBoundingClientRect()//获取目标的距离四周的距离
+        if (rect.bottom >= 0 && rect.top < viewheight) {
+          !function () {
+            var img = new Image()
+            img.src = item.dataset.original
+            img.onload = function () {
+              item.src = img.src
+            }
+            item.removeAttribute('data-orginal')
+            item.removeAttribute('lazyload')
+          }()
+        }
+      })
+    }
+    lazyload();
+    document.addEventListener('scroll', lazyload)
+  </script>
+</body>
+
+</html>
