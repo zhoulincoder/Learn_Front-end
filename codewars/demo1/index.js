@@ -16,4 +16,4 @@ function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-console.log (generateHashtag('hrllo miss dong'));
+console.log (generateHashtag('hello miss dong'));
