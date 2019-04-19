@@ -146,57 +146,98 @@
         <li class="comment-item">
           <div class="comment-item__sort">
             <span>全部</span>
-            <!-- <span class="comment-item__num"></span> -->
+            <span id="comment-total__num"></span>
           </div>
         </li>
         <li class="comment-item">
           <div class="comment-item__sort">
             <span>好评</span>
-            <span class="comment-item__num"></span>
+            <span id="comment-good__num"></span>
           </div>
         </li>
         <li class="comment-item">
           <div class="comment-item__sort">
             <span>差评</span>
-            <span class="comment-item__num"></span>
+            <span id="comment-bad__num"></span>
           </div>
         </li>
         <li class="comment-item">
           <div class="comment-item__sort">
             <span>点映</span>
-            <span class="comment-item__num"></span>
+            <span id="comment-dy__num"></span>
           </div>
         </li>
         <li class="comment-item">
           <div class="comment-item__sort">
             <span>购票</span>
-            <span class="comment-item__num"></span>
+            <span id="comment-bought__num"></span>
           </div>
         </li>
         <li class="comment-item">
           <div class="comment-item__sort">
             <span>认证作者</span>
-            <span class="comment-item__num"></span>
+            <span id="comment-author__num"></span>
           </div>
         </li>
         <li class="comment-item">
           <div class="comment-item__sort">
             <span>同城</span>
-            <span class="comment-item__num"></span>
+            <span id="comment-sameCity__num"></span>
           </div>
         </li>
       </ul>
     </section>
     <!-- section7 -->
-    <!-- <div class="section-seperate section-expander">
-      <p class="section-til"></p>
-    </div> -->
+    <section class="section-seperate section-expander">
+      <p class="section-til">精选</p>
+      <ul class="chosen-comment" id="chosen-comment">
+        <li class="chosen-comment__item">
+          <div class="item-avatal">
+            <img src="" alt="">
+          </div>
+          <div class="item-detail">
+            <div class="item-detail__hd">
+              <div>
+                <span class="nick-name">buzhidao</span>
+                <span class="level">
+                  <img src="" alt="">
+                </span>
+              </div>
+              <p class="item-score__desc">给这部电影打了<span>10</span>分</p>
+            </div>
+            <div class="item-detail__content">
+              <p>帅的一批</p>
+            </div>
+            <div class="item-detail__footer">
+              <span class="item-detail__time">03-22</span>
+              <div class="pull-right">
+                <a href="#" class="link comment-like">
+                  <i class="icon icon-approve"></i>
+                  <span>3423</span>
+                </a>
+                <a href="#" class="link comment-reply">
+                  <i class="icon icon-comment"></i>
+                  <span>4443</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
     <!-- !toast -->
     <div id="toast">
       <div class="weui-mask_transparent"></div>
       <div class="weui-toast">
         <i class="weui-icon-success-no-circle weui-icon_toast"></i>
         <p class="weui-toast__content">已标记为想看</p>
+      </div>
+    </div>
+    <div id="scoreToast">
+      <div class="weui-mask_transparent"></div>
+      <div class="weui-toast">
+        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+        <p class="weui-toast__content">已评分</p>
       </div>
     </div>
   </div>
@@ -221,7 +262,9 @@
           celebrity(res.data.person)
           booking(res.data.booking)
           photo(res.data.pictures)
-          commentTotal(res.data.commentTotal)
+          commentNum(res.data.commentNum)
+          $('#comment-total__num').html(res.data.commentTotal)
+          commentPerson(res.data.comment)
         }
       })
       function star(e) {
@@ -233,7 +276,7 @@
           $('#rating').prepend('<img class="img" src="./images/star.png">')
         }
       }
-
+      // 点击想看
       $('.movie-watch').click(function () {
         if ($(this).hasClass('active')) {
           $('.movie-watch').removeClass('active')
@@ -249,7 +292,22 @@
           $('#toast').css('display', 'none');
         }, 1500)
       })
-
+      // 点击评分
+      $('.movie-mark').click(function () {
+        if ($(this).hasClass('active')) {
+          $('.movie-mark').removeClass('active');
+          $('.movie-mark img').attr('src', './images/star2.png');
+          $('#scoreToast .weui-toast__content').html('已取消评分');
+        } else {
+          $('.movie-mark').addClass('active');
+          $('.movie-mark img').attr('src', './images/star1.png');
+          $('#scoreToast .weui-toast__content').html('已评分')
+        }
+        $('#scoreToast').css('display', 'block');
+        setTimeout(() => {
+          $('#scoreToast').css('display', 'none');
+        }, 1500)
+      })
       //收放详情
       //点击方法和上面的区别
       $('#text-expander').on('click', function () {
@@ -299,7 +357,7 @@
       }
       // 剧照
       function photo(e) {
-        for(let m of e){
+        for (let m of e) {
           $('.movie-photo__lists').append(`<li class="stage-img-container">
           <a href="#" class="link">
             <div class="movie-celebrities__pic" >
@@ -310,8 +368,18 @@
         }
       }
       //讨论
-      function comment(e) {
-        $('.movie-comment .comment-item .comment-item__sort').append(`<span class="comment-item__num">${commentTotal}</span>`)
+      function commentNum(e) {
+        // $('#comment-total__num').html(res.data.commentTotal)
+        $('#comment-good__num').html(e.good);
+        $('#comment-bad__num').html(e.bad);
+        $('#comment-dy__num').html(e.dy);
+        $('#comment-bought__num').html(e.bought);
+        $('#comment-author__num').html(e.author);
+        $('#comment-sameCity__num').html(e.sameCity);
+      }
+      // 评论精选
+      function commentPerson(e) {
+        
       }
     })()
   </script>
