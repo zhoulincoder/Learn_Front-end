@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Animal(age) {
+      console.log(arguments + '===')
+      this.species = "dongwu";
+      this.age = age;
+    }
+    function Cat(age, name, color) {
+      console.log(arguments);
+      Animal.call(this, age, name, color);
+      //apply 子类继承父类上的属性
+      this.name = name;
+      this.color = color;
+    }
+    var cat1 = new Cat(3, 'jiafeimao', 'yellow')
+  </script>
+</body>
+
+</html>
