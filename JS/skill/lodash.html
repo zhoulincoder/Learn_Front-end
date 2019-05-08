@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.12-pre/lodash.min.js"></script>
+    <script>
+      var user = {
+        info: {
+          avatar: [
+            'https://tse3-mm.cn.bing.net/th?id=OIP.xE8npZqRIsoTEquOseIwgQHaKQ&w=159&h=220&c=7&o=5&pid=1.7',
+            'https://cn.bing.com/th?id=OIP.Wt5sSPD95hiDXw9MJOn1zgHaE7&pid=Api&rs=1&p=0'
+          ]
+        }
+      }
+      const img1 = (user && user.info && user.info.avatar && user.info.avatar[1]) || 'default image';
+      const img2 = _.get(user, ['info', 'avatar', 1], 'default image')
+    </script>
+    <div class="image">
+      
+    </div>
+</body>
+</html>
