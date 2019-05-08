@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #elem-container{
+      position: absolute;
+      left: 100px;
+      top: 200px;
+      height: 100px;
+      width: 100px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div id="elem-container"></div>
+  <div id="output"></div>
+  <script>
+    function getTheStyle() {
+      let elem = document.getElementById('elem-container');
+      console.log(elem.style.height);
+      // 使用elem.style.height 是拿不到height属性
+      let theCSSCrop = window.getComputedStyle(elem, null).getPropertyValue('height');
+      // 拿到任何一个节点上的css属性
+      console.log(window.getComputedStyle(elem));
+      console.log(theCSSCrop);
+      document.getElementById('output').innerHTML = theCSSCrop;
+    }
+    getTheStyle();
+  </script>
+</body>
+</html>
