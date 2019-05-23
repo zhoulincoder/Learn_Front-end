@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>socket.io</title>
+</head>
+<body>
+  <!-- 这是一个模板文件 -->
+  <!-- 这是一个客户端 -->
+  <h1>hello~</h1>
+  <form action="">
+    <input type="text" id="message">
+    <button>发送</button>
+  </form>
+  <div id="message-board">
+
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    // let socket = io()
+    // // let io = socketIO(server)
+    // $('form').submit(function() {
+    //   //自定义了一个message事件
+    //   //发送信息上服务器
+    //   socket.emit('message', $('#message').val());
+    //   $('#message').val('')
+    //   return false
+    // })
+    // //接受服务器端发来的信息
+    // socket.on('message', function(msg) {
+    //   $('#message-board').append($('<div>').text(msg))
+    // })
+    var http = require('http')
+    http.createServer(function(request,response) {
+      response.writeHead(200, {'content-Type': 'text/plain'})
+      response.end('hello world')
+    }).listen(8080)
+    console.log('666666')
+  </script>
+</body>
+</html>
