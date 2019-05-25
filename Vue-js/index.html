@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app" class="">
+    <!-- {{message}}
+    <p class="coll">热热热</p>
+    <p class="good" v-bind:class="isGood ? 'cool' : 'notcool'">是上搜恶化及</p>
+    <p class="good" v-bind:class="[activeClass]">是上搜恶化及</p> -->
+    <!-- <ul>
+      <li v-for="a in todos">{{a.text}}</li>
+    </ul> -->
+
+    <!-- 双向数据绑定 -->
+    <!-- <p>{{content}}</p>
+    <input type="text" v-model="content"> -->
+    <p class="coll" v-on:click="reverseMsg">{{msg}}</p>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        // message: 'hello human',
+        // isGood: true,
+        // activeClass: 'active'
+
+        // todos: [
+        //   {text: 'xuexi vue'},
+        //   {text: 'xuexi js'},
+        //   {text: 'xuexi vue'}
+        // ]
+        msg: 'ths rev',
+        content:''
+      },
+      methods:{
+        // 生命周期函数有时间
+        reverseMsg() {
+          this.msg = this.msg.split('').reverse().join('')
+        }
+      }
+    })
+  </script>
+</body>
+</html>
