@@ -1,0 +1,18 @@
+<%- include('header') %>
+
+  用户的主页
+  <h2>
+    用户名：<%= user.name %>
+  </h2>
+  <!-- <p>
+    <%= user.posts[1].title %>
+  </p> -->
+  <% user.posts.forEach((item) => { %>
+    <li>
+      <a href="/post?id= <%= item.id %>">
+        <%= item.title %>
+      </a>
+    </li>
+  <% }) %>
+
+<%- include('footer') %>
