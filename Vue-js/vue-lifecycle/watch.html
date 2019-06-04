@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <title>监听数据变化</title>
+</head>
+<body>
+  <div id="app">
+    <div class="temperature">{{temperature}}</div>
+    <p class="suggestion">{{suggestion}}</p>
+    <div class="btn">
+      <button @click="add">add</button>
+      <button @click="reduce">reduce</button>
+    </div>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data () {
+        return {
+          temperature: 29,
+          suggestion: '短袖'
+        }
+      },
+      methods: {
+        add () {
+          this.temperature += 5
+        },
+        reduce () {
+          this.temperature -= 5
+        }
+      },
+      watch: {
+        temperature (newVal, oldVal) {
+          if(oldVal >= 26 || newVal >= 26) {
+            this.suggestion = '裤衩 背心 人字拖'
+          } else if(newVal >= 0 && newVal < 26) {
+            this.suggestion = '长袖 夹克'
+          } else  {
+            this.suggestion = '被子裹着'
+          }
+        }
+        
+      },
+    })
+  </script>
+</body>
+</html>
