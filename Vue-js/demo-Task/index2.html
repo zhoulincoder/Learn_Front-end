@@ -20,7 +20,7 @@
     <!-- 双向数据绑定 -->
     <!-- <p>{{content}}</p>
     <input type="text" v-model="content"> -->
-    <p class="coll" v-on:click="reverseMsg">{{msg}}</p>
+    <p class="coll" v-on:click="reverseNews">{{msg}}</p>
   </div>
   <script>
     var app = new Vue({
@@ -40,8 +40,8 @@
       },
       methods:{
         // 生命周期函数有时间
-        reverseMsg() {
-          this.msg = this.msg.split('').reverse().join('')
+        reverseNews() {
+          this.msg = this.msg.split('').reverse().join('')   //计算属性  对数据源改造输出
         }
       }
     })
