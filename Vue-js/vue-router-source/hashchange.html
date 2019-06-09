@@ -19,9 +19,7 @@
   <script>
     // hashchange 导航
     // 内容显示区域
-    const Home = { template: '<div>home</div>' }
-    const Book = { template: '<div>book</div>' }
-    const Movie = { template: '<div>movie</div>' }
+    
     class Router {
       constructor(options) {
         this.routes = {}  //前端路由对象  ??
@@ -39,7 +37,10 @@
       //链接的点击事件
       bindEvent() { }
       init() {
-        window.addEventListener('hashchange', this.updateView.bind(this))
+        window.addEventListener('load', this.updateView.bind(this), false)
+        // 默认打开首页
+        window.addEventListener('hashchange', this.updateView.bind(this), false)
+        // false  由内向外冒泡
       }
       updateView() {
         // console.log('updated')
