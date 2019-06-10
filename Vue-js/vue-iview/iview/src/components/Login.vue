@@ -1,47 +1,52 @@
 <template>
   <div class="login">
     <i-form ref="formLogin" :model="formLogin" :rules="formLoginRules" class="card-box">
+      <!-- title -->
       <FormItem class="formLogin-title">
         <h3>系统登录</h3>
       </FormItem>
-      <FormItem prop="userName">
-        <i-input type="text" v-model="formLogin.userName" placeholder="用户名">
+      <!-- user -->
+      <FormItem prop="username">
+        <i-input size="large" type="text" v-model="formLogin.username" placeholder="用户名">
           <Icon type="ios-person-outline" slot="prepend"></Icon>
         </i-input>
       </FormItem>
+      <!-- password -->
       <FormItem prop="password">
-        <i-input type="password" v-model="formLogin.password" placeholder="密码">
+        <i-input size="large" type="password" v-model="formLogin.password" placeholder="密码">
           <Icon type="ios-lock-outline" slot="prepend"></Icon>
         </i-input>
       </FormItem>
-      <FormItem>
-        <Checkbox v-model="formLogin.remeber">记住密码</Checkbox>
+      <FormItem class="login-no-bottom">
+        <Checkbox v-model="formLogin.remember">记住密码</Checkbox>
       </FormItem>
       <FormItem>
-        <Row>
-          <i-col :xs="{ span: 4, offset: 6}">
-            <Button type="primary" @click="handleSubmit('formLogin')">登录</Button>
-          </i-col>
-          <i-col :xs="{ span: 4, offset: 6}">
-            <Button type="primary">重置</Button>
-          </i-col>
-        </Row>
+          <Row>
+              <i-col :xs="{ span: 5, offset: 5}">
+                <Button type="primary" @click="handleSubmit('formLogin')">登陆</Button>
+              </i-col>
+              <i-col :xs="{ span: 5, offset: 5}">
+                <Button type="primary"  >重置</Button>
+              </i-col>
+          </Row>
       </FormItem>
+      
     </i-form>
   </div>
 </template>
+
 <script>
 export default {
   name: "Login",
   data() {
     return {
       formLogin: {
-        userName: "",
+        username: "",
         password: "",
         remember: false
       },
       formLoginRules: {
-        userName: [
+        username: [
           {
             required: true,
             message: "Please fill in the user name",
@@ -65,43 +70,35 @@ export default {
     };
   },
   methods: {
-    handleSubmit(name) {
-      this.$refs[name].validate(valid => {
-        sessionStorage.setItem("user", JSON.stringify(this.formLogin.userName));
-        if (valid) {
-          this.$Message.success("提交成功");
-          this.$router.push({
-            path: "table"
-          });
-        } else {
-          this.$Message.error("验证失败");
-        }
-
-        if (this.formLogin.remember) {
-          sessionStorage.setItem(
-            "userName",
-            JSON.stringify(this.formLogin.userName)
-          );
-          sessionStorage.setItem(
-            "password",
-            JSON.stringify(this.formLogin.password)
-          );
-        } else {
-          sessionStorage.removeItem("userName");
-          sessionStorage.removeItem("password");
-        }
-      });
+    handleSubmit(name){
+      this.$refs[name].validate(valid =>{
+           sessionStorage.setItem('user',this.formLogin.username)
+           if(valid){
+             this.$Message.success('提交成功'),
+             this.$router.push({path: '/table'})
+           }else{
+             this.$Message.error('失败')
+           }
+           if (this.formLogin.remember){
+             sessionStorage.setItem('username', this.formLogin.username)
+           }else{
+             sessionStorage.removeItem('username', this.formLogin.username)
+           }
+      })
     }
-  }
+  },
 };
 </script>
-<style scope>
+
+<style scoped>
 .login {
-  width: 100%;
-  height: 100%;
-  background: url(../assets/bg.jpg) no-repeat;
-  background-size: cover;
-  overflow: hidden;
+    width: 100%;
+    height: 100%;
+    /* background-size: cover; */
+    background: url('../assets/bg.jpg') no-repeat; 
+    background-size: cover;
+    overflow: hidden;
+
 }
 .card-box {
   padding: 20px;
@@ -124,7 +121,7 @@ export default {
 }
 .formLogin-title {
   text-align: center;
-  font-size: 28px;
+  font-seze: 28px;
 }
 .formLogin-title h3 {
   font-size: 18px;
@@ -132,8 +129,10 @@ export default {
 .login-no-bottom {
   margin-bottom: 10px;
 }
-/* .btnLogin {
-  text-align: center;
-} */
+.ivu-form-item-content {
+    text-align: center;
+}
 </style>
+
+
 
