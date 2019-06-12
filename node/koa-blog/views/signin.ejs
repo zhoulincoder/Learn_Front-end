@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="/index.css">
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body>
   <div class="container">
@@ -20,7 +22,7 @@
       </div>
       <div>
         <label for="repeatpass">确认密码</label>
-        <input type="password" id="repeatpass" name="password" placeholder="请输入密码">
+        <input type="password" id="repeatpass" name="repeatpass" placeholder="请输入密码">
       </div>
       <div>
         <label>上传头像</label>
@@ -31,5 +33,34 @@
       </div>
     </form>
   </div>
+  <script>
+    $(window).keyup( function (e) {
+      if( e.keyCode == 13) {
+        $('.submit').click()
+      }
+    })
+    $('.submit').click( () => {
+      const name = $('input[name=name]').val().trim()
+      const password = $('input[name=password]').val().trim()
+      const repeatPass = $('input[name=repeatpass]').val().trim()
+      const avatar = $('#avatar').val()
+      console.log('提交之前', {name, password, repeatPass, avatar})
+      $.ajax({
+        url: '/signin',
+        type: 'POST',
+        data: {
+          name, password, repeatPass, avatar
+        },
+        dataType: 'JSON',
+        success: function(data) {
+          console.log('服务器返回的数据',data)
+        },
+        error: function(err) {
+          console.log(err)
+          alert('注册异常')
+        }
+      })
+    })
+  </script>
 </body>
 </html>
