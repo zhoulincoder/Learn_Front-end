@@ -1,5 +1,5 @@
 <template>
-  <div class="conteiner">{{sendMsg}}{{sendAge}}{{sendDate}}</div>
+  <div class="container">{{sendMsg}}{{sendAge}}{{sendDate}}</div>
   
 </template>
 <script>
@@ -24,7 +24,7 @@ export default {
       require: true
     }
     // sendTest: {
-    //   type: Object,
+    //   type: Array,
     //   require: true
     // }
   }

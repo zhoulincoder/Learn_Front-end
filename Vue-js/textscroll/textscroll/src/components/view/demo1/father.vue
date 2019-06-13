@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <child :send-msg="message" :send-date="date" :send-age="age" send-test="test"></child>
+    <child :send-msg="message" :send-date="date" :send-age="age" :send-test="test"></child>
   </div>
 </template>
 <script>
@@ -12,11 +12,13 @@ export default {
       message: "父调用子",
       date: "2019-6-11",
       age: "18",
-      test: {
-        message: "父调用子",
-        date: "2019-6-11",
-        age: "18"
-      }
+      test: [
+        {message: "父调用子"},
+        {date: "2019-6-11"},
+        {age: "18"}
+      ]
+        
+      
     };
   },
   components: {
