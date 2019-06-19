@@ -36,20 +36,33 @@
                     <span class="now">￥{{food.price}}</span>
                     <span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                   </div>
+                  <!-- 加号按钮 -->
+                  <div class="cartcontrol-wrapper">
+                    <cartcontrol :food="food" @add="addFood"></cartcontrol>
+                  </div>
                 </div>
               </li>
             </ul>
           </li>
         </ul>
       </div>
+      <shopcart ref="shopcart" :selectFoods = "selectFoods" 
+      :deliveryPrice="seller.deliveryPrice" :minPrice="seller.minPrice"></shopcart>
     </div>
   </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
+import cartcontrol from '@/components/cartcontrol/cartcontrol.vue'
+import shopcart from '@/components/shopcart/shopcart.vue'
 export default {
   name: "goods",
+  props: {
+    seller: {
+      type: Object
+    }
+  },
   data() {
     return {
       classMap: [],
@@ -58,6 +71,10 @@ export default {
       listHeight: [],
       scrollY: 0
     };
+  },
+  components: {
+    cartcontrol,
+    shopcart
   },
   created() {
     this.classMap = ["decrease", "discount", "special", "invoice", "guarantee"];
@@ -85,6 +102,17 @@ export default {
         }
       }
       return 0
+    },
+    selectFoods () {
+      let foods = []
+      this.goods.forEach( good => {
+        good.foods.forEach( food => {
+          if(food.count) {
+            foods.push(food)
+          }
+        })
+      })
+      return foods
     }
   },
   methods: {
@@ -122,6 +150,14 @@ export default {
         height += item.clientHeight
         this.listHeight.push(height)
       }
+    },
+    addFood(target) {
+      this._drop(target) 
+    },
+    _drop(target) {
+      this.$nextTick( () => {
+        // this.
+      })
     }
   }
 }
@@ -227,6 +263,10 @@ export default {
           .old
             text-decoration line-through
             color rgb(147, 153, 159)
+        .cartcontrol-wrapper
+          position absolute
+          right 0
+          bottom 10px
 
 
 </style>

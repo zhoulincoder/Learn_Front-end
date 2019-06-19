@@ -135,7 +135,7 @@ export default {
           margin-bottom 10px
           line-height 12px
           font-size 12px
-        .support
+        .supports
           .icon
             display inline-block
             vertical-align top
