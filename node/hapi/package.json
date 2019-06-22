@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "env2": "^2.2.2",
+    "hapi": "16",
+    "hapi-swagger": "7",
+    "inert": "4",
+    "joi": "13",
+    "package": "^1.0.1",
+    "vision": "4"
+  }
+}
