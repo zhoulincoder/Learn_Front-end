@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import Child from './Child'
 import Child1 from './Child1'
 import Context from './Context'

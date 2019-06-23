@@ -33,6 +33,7 @@ class DynamicField extends React.Component{
   }
   handleChange = (value, key, i) => {
     let lists = this.state.lists.slice(0)  //浅拷贝
+
     const obj = lists[i]
     // {
     //   name: '123'

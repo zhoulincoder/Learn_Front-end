@@ -25,7 +25,8 @@ class Message extends React.Component {
 
 class Context extends React.Component{
   shouldComponentUpdate() {
-    return false
+    return true
+    //为false 为影响数据改变（后代更新）
   }
   state = {
     msgs: ['msg1', 'msg2', 'msg3'],
