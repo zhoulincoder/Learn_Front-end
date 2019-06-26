@@ -56,12 +56,12 @@
 // getPersonInfo(person, age)
 
 //#18
-function getAge(...args) {
-  console.log(args)
-  console.log(typeof args);
-}
+// function getAge(...args) {
+//   console.log(args)
+//   console.log(typeof args);
+// }
 
-getAge(123);
+// getAge(123);
 
 
 // function add(x, y) {
@@ -69,3 +69,51 @@ getAge(123);
 // }
 // var numbers = [4, 38];
 // console.log(add(...numbers) )
+
+// var promises = [1,2,3,4,5,6].map(function (id) {
+//   return id
+//  });
+ 
+//  Promise.all(promises).then(function (posts) {
+//   // ...
+//   console.log(posts);
+  
+//  }).catch(function(reason){
+//   // ...
+//   console.log(reason);
+  
+//  });
+
+//#29
+// const a = {};
+// const b = { key: "b" };
+// const c = { key: "c" };
+
+// a[b] = 123;
+// a[c] = 456;
+
+// console.log(a[b]);
+
+// const person = { name: "Lydia" };
+
+// function sayHi(age) {
+//   console.log(`${this.name} is ${age}`);
+// }
+
+// sayHi.call(person, 21);
+// sayHi.bind(person, 21);
+var a = {
+  b: function() {
+    var _this = this; // 通过赋值的方式将this赋值给that
+    var func = function() {
+      console.log(_this.c + 'c');
+    }
+    func();
+  },
+  c: 'hello'
+}
+a.b(); // hello
+console.log(a.c); // hello
+
+
+
