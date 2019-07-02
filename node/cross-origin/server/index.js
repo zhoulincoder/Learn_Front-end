@@ -3,6 +3,11 @@ const app = new Koa();
 const koaStatic = require('koa-static');
 const path = require('path');
 const router = require('koa-router')();
+
+app.use(koaStatic(
+  path.join(__dirname, './public/')
+))
+
 // res.set
 app.use(async (ctx, next) => {
   // 允许哪个域名请求 *
@@ -19,7 +24,8 @@ app.use(async (ctx, next) => {
   await next();
 })
 router.get('/api/post', async function (ctx) {
-  console.log('cookie', ctx.cookies.get('name'));
+  // console.log('cookie', ctx.cookies.get('name'));
+  ctx.cookies.set('key', 'value')
   ctx.body = [
     { title: 'node.js 入门到精通', createTime: '2018-12-12' },
     { title: 'php 入门到精通', createTime: '2018-11-11' },
