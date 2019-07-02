@@ -31,5 +31,6 @@ class ExampleDebounce extends Component {
     );
   }
 }
- 
+console.log(ExampleDebounce.displayName);
+
 export default ExampleDebounce;

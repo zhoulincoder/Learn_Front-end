@@ -33,7 +33,7 @@ export function decArrowDebounce(wait) {
     var fn = debounce(callBack, wait)
     // value  属性 =》 方法
     //  get 方法 =》 属性
-    // descriptor.vale 
+    // descriptor.value 
     // 改变原来的  ||  返回新的
     return {
       configurable: true,
