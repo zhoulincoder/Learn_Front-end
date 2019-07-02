@@ -73,15 +73,15 @@
 // var promises = [1,2,3,4,5,6].map(function (id) {
 //   return id
 //  });
- 
+
 //  Promise.all(promises).then(function (posts) {
 //   // ...
 //   console.log(posts);
-  
+
 //  }).catch(function(reason){
 //   // ...
 //   console.log(reason);
-  
+
 //  });
 
 //#29
@@ -102,18 +102,51 @@
 
 // sayHi.call(person, 21);
 // sayHi.bind(person, 21);
-var a = {
-  b: function() {
-    var _this = this; // 通过赋值的方式将this赋值给that
-    var func = function() {
-      console.log(_this.c + 'c');
-    }
-    func();
-  },
-  c: 'hello'
-}
-a.b(); // hello
-console.log(a.c); // hello
+// var a = {
+//   b: function() {
+//     var _this = this; // 通过赋值的方式将this赋值给that
+//     var func = function() {
+//       console.log(_this.c + 'c');
+//     }
+//     func();
+//   },
+//   c: 'hello'
+// }
+// a.b(); // hello
+// console.log(a.c); // hello
 
 
 
+// var arr = [ {a:1}, {b:2} ]
+// var test = arr[0].a
+// console.log(test);
+
+// const Time = new Date()
+// const createTime = '${Time.getMonth}月${Time.getDay}日${Time.getHours}:${Time.getDay}'
+// console.log(createTime);
+
+// str=str.replace(/MM/,this.getMonth()>9?this.getMonth().toString():'0' + this.getMonth());   
+// str=str.replace(/M/g,this.getMonth());   
+
+// Array.prototype.removeByValue = function(val) {
+//   for(var i=0; i<this.length; i++) {
+//     if(this[i].id == val) {
+//       this.splice(i, 1);
+//       break;
+//     }
+//   }
+// }
+// var arr = [
+//   {id:"mon"},
+//   {id:"tue"}, 
+//   {id:"wed"}, 
+//   {id:"thur"}
+// ]
+// arr.removeByValue("tue");
+
+// console.log(arr);
+
+var arr = ['1.1','1.2','1.3','1.4','1.5','1.6','1.7'];
+
+
+console.log(arr.slice(-8));
