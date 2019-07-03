@@ -50,12 +50,12 @@ class App extends React.Component {
     const Main = (<p>main</p>)
     const lists = [1, 2, 3, 4, 5]
     const listsNode = lists.map((list, index) => <li key={index}>{list}</li>)
+    var test = 'helloword!'
     return (
       <div className={isRed ? red : ''}>hello world
         <Child msg={ msg }/>
         {
-          isRed ?
-            <span>red</span> : <span>nored</span>
+          isRed ? <span>red</span> : <span>nored</span>
         }
         {
           listsNode
@@ -71,6 +71,7 @@ class App extends React.Component {
           Main
         }
         {this.renderFooter()}
+        {test}
       </div>
     )
   }

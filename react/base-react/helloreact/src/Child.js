@@ -22,7 +22,8 @@ class Child extends Component {
     return (
       <div onClick={this.handleClick.bind(this)}>
         {this.props.msg}
-        <input type="text" placeholder="请输入内容" value={this.state.inputVal} onChange={this.handleChange} />
+        <input type="text" placeholder="请输入内容" 
+          value={this.state.inputVal} onChange={this.handleChange} />
         {this.state.inputVal}
       </div>
     )
