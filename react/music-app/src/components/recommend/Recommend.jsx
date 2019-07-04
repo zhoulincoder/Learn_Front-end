@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom'
 import Swiper from 'swiper';
 import { getCarousel, getNewAlbum } from '../../api/recommend';
 // import { CODE_SUCCESS } from '../../api/config';
@@ -6,6 +7,7 @@ import { createAlbumByItem } from '../../model/album';
 import Scroll from '../../common/scroll/Scroll';
 import Lazyload, { forceCheck } from 'react-lazyload';
 import Loading from '../../common/loading/Loading'
+import Album from '../../containers/Album'
 import 'swiper/dist/css/swiper.css';
 import './recommend.styl';
 
@@ -49,13 +51,26 @@ class Recommend extends Component {
     })
 
   }
+  handleToAlbumDetail = (url) => {
+    // console.log(this.props);
+    
+    //专辑点击事件
+    return  () => {
+      this.props.history.push({
+        pathname: url
+        //点击专辑 路径改变
+      })
+    }
+  }
   renderAlbum() {
      // 渲染 album
     const { albumList = [] } = this.state;
+    const { match } = this.props;
     return albumList.map(item => {
       const album = createAlbumByItem(item);
       return (
-        <div className="album-wrapper" key={album.mId}>
+        <div className="album-wrapper" key={album.mId} 
+        onClick={this.handleToAlbumDetail(`${match.url}/${album.mId}`)}>
           <div className="left">
             <Lazyload >
               <img src={album.img} width="100%" height="100%" alt=""/>
@@ -96,6 +111,7 @@ class Recommend extends Component {
   }
   render() {
     const { refreshScroll } = this.state;
+    const { match } = this.props
     return ( 
       <div className="music-recommend">
         
@@ -117,6 +133,7 @@ class Recommend extends Component {
         </div>
         </Scroll>
         <Loading title="正在加载中" show={this.state.show} />
+        <Route path={`${match.url}/:id`} component={Album} />
       </div>
      );
   }
