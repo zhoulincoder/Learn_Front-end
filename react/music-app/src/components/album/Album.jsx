@@ -1,37 +1,49 @@
 import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Scroll from '../../common/scroll/Scroll';
-import { getAlbuminfo } from '../../api/recommend'
-import * as AlbumModel from '../../model/album'
-import * as SongModel from '../../model/song'
-import Header from '../../common/header/Header'
-import './album.styl'
+import { getAlbuminfo } from '../../api/recommend';
+import { getSongVKey } from '../../api/song';
+import * as AlbumModel from '../../model/album';
+import * as SongModel from '../../model/song';
+import Header from '../../common/header/Header';
+import './album.styl';
 class Album extends Component {
   state = {
     show: false,
     songs: [],
     album: {},
-    loading: true
+    loading: true,
+    refresh: false
+  }
+  getSongUrl = (song, mId) => {
+    // 请求
+    getSongVKey(mId).then(res => {
+      if (res.data.items) {
+        let item = res.data.items[0];
+        song.url = `http://dl.stream.qqmusic.qq.com/${item.filename}?vkey=${item.vkey}&guid=3655047200&fromtag=66`
+      }
+      console.log('res', res);
+      
+    })
   }
   componentDidMount() {
-    const id = this.props.match.params.id; //不理解
+    const id = this.props.match.params.id;
     getAlbuminfo(id).then(res => {
-      //获取专辑详情
       console.log('getAlbuminfo', res);
-      let album = AlbumModel.createAlbumBydetail(res.data)
-      // console.log(album);
-
-      album.desc = res.data.desc
-      let songList = res.data.list
-      let songs = []
+      let album = AlbumModel.createAlbumBydetail(res.data);
+      album.desc = res.data.desc;
+      let songList = res.data.list;
+      let songs = [];
       songList.forEach(item => {
-        let song = SongModel.createSong(item)
-        songs.push(song)
+        let song = SongModel.createSong(item);
+        this.getSongUrl(song, item.songmid)
+        songs.push(song);
       })
       this.setState({
         loading: false,
         album: album,
-        songs
+        songs,
+        refresh: true
       })
     })
     this.setState({
@@ -39,15 +51,19 @@ class Album extends Component {
     })
   }
   selectSong = (song) => {
+    console.log('props',this.props);
+    
     return () => {
-      this.props.changeCurrentSong(song)
+      this.props.changeCurrentSong(song);
     }
   }
   render() {
-    const { album } = this.state
+    const { album, refresh } = this.state;
     const songsNode = this.state.songs.map((song) => {
       return (
-        <div className="song" key={song.id} onClick={this.selectSong(song)}>
+        <div className="song" key={song.id}
+        onClick={this.selectSong(song)}
+        >
           <div className="song-name">
             {song.name}
           </div>
@@ -60,29 +76,30 @@ class Album extends Component {
     return (
       <CSSTransition in={this.state.show} timeout={300}
         classNames="translate">
-        {/* 很多 类名的前缀 */}
         <div className="music-album">
           <Header title={album.name} ref="header" />
           <div style={{ position: 'relative' }}>
-            <div ref='albumBg' className="album-img" style={{ backgroundImage: `url(${album.img})`}}>
+            <div ref="albumBg" className="album-img"
+              style={{ backgroundImage: `url(${album.img})` }}
+            >
               <div className="filter"></div>
-              {/* <span>播放</span> */}
             </div>
             <div ref="albumFixedBg" className="album-img fixed">
               <div className="filter"></div>
             </div>
             <div className="play-wrapper" ref="playButtonWrapper">
               <div className="play-button">
-                <span className="icon-play">播放全部</span>
+                <i className="icon-play"></i>
+                <span>播放全部</span>
               </div>
             </div>
           </div>
           <div className="album-container">
             <div className="album-scroll">
-              <Scroll onScroll={() => {}}>
+              <Scroll onScroll={() => { }} refresh={refresh}>
                 <div className="album-wrapper">
                   <div className="song-count">
-                    专辑共{songsNode.length}首歌
+                    专辑 共 {songsNode.length} 首
                   </div>
                   <div className="song-list">
                     {songsNode}
@@ -102,5 +119,4 @@ class Album extends Component {
     );
   }
 }
-
-export default Album
+export default Album;

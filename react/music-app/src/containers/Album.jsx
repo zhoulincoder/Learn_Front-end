@@ -2,6 +2,21 @@
 import { connect } from 'react-redux'
 import Album from '../components/album/Album'
 import { changeSong } from '../redux/action'
+
+//这个文件和redux 有关
+// const mapStateToProps = (state) => {}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeCurrentSong: (song) => {
+      dispatch(changeSong(song))
+    }
+  }
+}
+export default connect(null, mapDispatchToProps)(Album)
+// export default Album
+
+
+
 // class Album extends Component {
 //   state = {  }
 //   render() { 
@@ -21,14 +36,3 @@ import { changeSong } from '../redux/action'
  * !! 看文档
  *   
  */
-//这个文件和redux 有关
-// const mapStateToProps = (state) => {}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeCurrentSong: (song) => {
-      dispatch(changeSong(song))
-    }
-  }
-}
-export default connect(null, mapDispatchToProps)(Album)
-// export default Album
