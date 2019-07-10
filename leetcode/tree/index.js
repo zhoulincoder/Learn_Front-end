@@ -22,7 +22,7 @@ a3.right = a5
 // 子节点可能还有子节点
 // 用到队列
 
-function levelOrderTravesal(root) {
+var levelOrder = function (root) {
   if(!root) return [];
   const items = [];
   const queue = [root, null];  //队列，等待被了解清况的节点，shift， 未处理的push入队
@@ -51,7 +51,7 @@ function levelOrderTravesal(root) {
   }
   return items;
 }
-console.log(levelOrderTravesal(a1));
+console.log(levelOrder(a1));
 /**
  * queue [root, null]
  * levelNodes []
