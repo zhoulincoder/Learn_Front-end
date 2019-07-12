@@ -1,19 +1,19 @@
 
-// let a = {
-//   user: '蜗牛',
-//   fn: function (e, f) {
-//     console.log(this.user);
-//     console.log(e + f );
+let a = {
+  user: '蜗牛',
+  fn: function (e, f) {
+    console.log(this.user);
+    console.log(e + f );
     
-//   }
-// }
-// let b = a.fn
-// // b.call(a, 2)  
-// // a.fn()
-// // b.apply(a, [1])
-// b.bind(a)
-// let c = b.bind(a,2)
-// c(99999,9)
+  }
+}
+let b = a.fn
+// b.call(a, 2)  
+// a.fn()
+// b.apply(a, [1])
+b.bind(a)
+let c = b.bind(a,2)
+c(99999,9)
 
 //call 的原理
 Function.prototype.call = function () {
