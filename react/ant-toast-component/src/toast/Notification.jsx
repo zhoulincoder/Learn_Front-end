@@ -12,15 +12,15 @@ class Notification  extends Component {
   }
   addNotice = (notice) => {
     console.log(notice);
-    const { notices } = this.state;
-    notice.key = this.getNoticeKey();
-    notices.push(notice);
-    this.setState({
-      notices
-    })
-    setTimeout(() => {
-      this.removeNotice(notice.key);
-    }, notice.duration);
+    // const { notices } = this.state;
+    // notice.key = this.getNoticeKey();
+    // notices.push(notice);
+    // this.setState({
+    //   notices
+    // })
+    // setTimeout(() => {
+    //   this.removeNotice(notice.key);
+    // }, notice.duration);
   }
   removeNotice = (key) => {
     // 
