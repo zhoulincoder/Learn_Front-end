@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // generate 函数
+    function* test() {
+      // yield只是一个声明 
+      let a = yield 1;  // 带参类似于前一个的g.next() 执行完后的返回值 g.next('adffv')
+      console.log('a', a);
+      yield 2;
+      console.log('22');
+      yield 3;
+      console.log('33');
+      
+    } 
+    // 惰性的
+    var g = test()
+    // g.next() 执行每一条语句
+    let gn = g.next()
+    while( !gn.done) {
+      gn = g.next()
+    }
+
+    function* test1 () {
+      let a = yield true;
+      console.log(a)
+      let b = yield false;
+      console.log(b);
+    }
+    autoRun(test1) 
+
+    function autoRun(genFun) {
+      var g = genFun()
+      let gn = g.next()
+      // {value, done}
+      while(!gn.done) {
+        gn = g.next(gn.value)
+      }
+    }
+
+    function autoRun1(genFun) {
+      // 递归执行
+      var g = genFun()
+      function next(value) {
+        let gn = g.next(value);
+        if(gn.done) return 
+        next(gn.value)
+      }
+      next()
+    }
+    autoRun1(test1)
+  </script>
+</body>
+</html>
