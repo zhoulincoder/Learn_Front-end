@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">button</button>
+  <script type="module">
+    // import {c, d} from './main.js'  
+    // console.log('c,d', c, d);
+    import obj from './main.js'
+    console.log(obj);   // 只接受到default export
+    import * as main from './main.js'
+    console.log(main); // 全部都接收到了
+
+    const btn = document.getElementById('btn')
+    btn.addEventListener('click', () => {
+      import('./main.js')
+      .then(res => {
+        console.log(res.a,'动态导入');
+        console.log(res.c);
+      })
+    })
+
+    import {hh} from './middle.js'
+    console.log('d',hh);
+    
+  </script>
+</body>
+
+</html>
