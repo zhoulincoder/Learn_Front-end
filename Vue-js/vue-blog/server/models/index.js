@@ -1,30 +1,37 @@
-const mongoose = require('mongoose')  //数据驱动
+const mongoose = require('mongoose'); //数据库驱动
 const path = require('path')
-const requireAll = require('require-all')
-const mongoUrl = `mongodb: //127.0.0.1: 27017/blog`
+const requireAll = require('require-all');
 
-const User = mongoose.model('User')
-
+// ORM
 requireAll({
   dirname: path.join(__dirname, './'),
   filter: /(.+)\.model\.js$/,
-  //     分组的贪婪匹配
   recursive: true
 })
+
+
+const mongoUrl = `mongodb://127.0.0.1:27017/blog`
+const User = mongoose.model('User')
+const Article = mongoose.model('Article')
 mongoose.connection
   .openUri(mongoUrl, {
-    useCreateIndex: true,
     useNewUrlParser: true,
+    useCreateIndex: true,
     user: '',
     pass: ''
   })
   .once('open', async () => {
-    console.log('数据库链接成功');
-    let user = new User({
-      role: 'superAdmin',
-      username:'root',
-      password: '1234',
-      email: '123@.com'
+    console.log('数据库连接成功');
+    // let user = new User({
+    //   role: 'superAdmin',
+    //   username: 'root',
+    //   password: '123456',
+    //   email: 'xxx@163.com'
+    // });
+    // user.save();
+    const article = new Article({
+      title: '欢迎使用博客',
+      content: '当你看到速度和幅度的酷酷酷酷酷酷物'
     });
-    user.save()
+    article.save()
   })

@@ -1,26 +1,27 @@
+// 物理collection的model 映射
 const mongoose = require('mongoose');
-const md5 = require('md5')
-const { Schema } = mongoose
+const md5 = require('md5');
+const { Schema } = mongoose 
 const UserSchema = new Schema ({
   role: {
     type: String,
-    enum: ['superAdmin', 'admin', 'uer'],   //枚举类型  约定只有这几种
+    enum: ['superAdmin', 'admin', 'user'],
     default: 'user'
   },
   username: {
     type: String,
     trim: true,
-    unique: true   // 唯一索引
+    unique: true
   },
   email: {
     type: String,
-    unique: true,  
-    trim: true,  //去空格
+    unique: true,
+    trim: true,
     lowercase: true
   },
   password: {
     type: String,
-    set: md5      //密码加密
+    set: md5
   },
   description: {
     type: String,
@@ -30,21 +31,19 @@ const UserSchema = new Schema ({
     type: String,
     trim: true,
     default: ''
-  },
-}, {
+  }
+},{
   timestamps: {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   },
   toJSON: {
     transform(doc, ret) {
-      // 取出删除id和密码
       ret.id = ret._id
       delete ret._id
       delete ret.password
     }
   },
-  minimize:false
+  minimize: false
 })
-// 物理collection 的model 映射
-mongoose.model('User', UserSchema)
+mongoose.model('User', UserSchema);
