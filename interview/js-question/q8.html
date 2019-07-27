@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    li:hover{
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <ul id="ul-list">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+    <button onclick="addli()">点击添加</button>
+  </div>
+  <script>
+    //   利用点击冒泡
+    window.onload = function () {
+      var oul = document.getElementById('ul-list')
+      oul.addEventListener('click', (e) => {
+        var test = e.target || e.srcElement
+        // console.log(test);
+        if (test.nodeName.toLowerCase() === 'li') {
+          var target = e.target.innerHTML
+          console.log(target);
+        }
+      })
+      oul.addEventListener('mouseover', (e) => {
+        var test = e.target || e.srcElement
+        // console.log(test);
+        if (test.nodeName.toLowerCase() === 'li') { }
+      })  
+
+    }
+    function addli() {
+      var oul = document.getElementById('ul-list')
+      var linum = oul.getElementsByTagName('li').length
+      console.log(linum);
+      var nli = document.createElement('li')
+      nli.innerHTML = linum+1
+      oul.appendChild(nli)
+    }
+  </script>
+</body>
+
+</html>
