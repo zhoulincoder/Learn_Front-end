@@ -34,6 +34,8 @@ router.get('/api/post', async function (ctx) {
 
 router.get('/api/user', async (ctx) => {
   const callback = ctx.request.query.callback
+  console.log(ctx.request);
+  
   const user = {
     name: 'abc', age: 18
   }

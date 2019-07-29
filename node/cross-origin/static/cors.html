@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-    <script>
-      document.cookie="name=hellowCORS";
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    document.cookie = "name=hellowCORS";
     $.ajax({
       type: 'GET',
       url: 'http://localhost:8080/api/post',
@@ -22,13 +24,14 @@
       xhrFields: {
         withCredentials: true
       },
-      success: function(res) {
+      success: function (res) {
         console.log('得到数据', res);
       },
-      error: function(e) {
+      error: function (e) {
         console.log(e);
       }
     })
-    </script>
+  </script>
 </body>
+
 </html>
