@@ -11,24 +11,27 @@
 <body>
   <button id="btn">button</button>
   <script type="module">
-    // import {c, d} from './main.js'  
-    // console.log('c,d', c, d);
+    
     import obj from './main.js'
     console.log(obj);   // 只接受到default export
     import * as main from './main.js'
     console.log(main); // 全部都接收到了
+    import {c, d} from './main.js'  
+    console.log('c,d', c, d);
 
     const btn = document.getElementById('btn')
     btn.addEventListener('click', () => {
       import('./main.js')
       .then(res => {
-        console.log(res.a,'动态导入');
-        console.log(res.c);
+        console.log(res.a, '动态导入a失败')
+        console.log(res.c, '动态导入c成功')
       })
     })
 
-    import {hh} from './middle.js'
-    console.log('d',hh);
+    import {dValue, abValue} from './middle.js'
+    console.log('dValue', dValue)
+    console.log('abValue', abValue)
+    
     
   </script>
 </body>

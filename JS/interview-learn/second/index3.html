@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <script>
+    function loadImg(src, callback, fail) {
+      var img = document.createElement('img')
+      img.onload = function () {
+        callback(img)
+      }
+      img.onerror = function () {
+        fail()
+      }
+      img.src = src
+    }
+    var src = 'https://www.imooc.com/static/img/index/logo.png'
+    loadImg(src, function (img) {
+      console.log(img.width);
+    }, function () {
+      console.log('failed');
+    })  
+  </script> -->
+  <script>
+    function loadImg(src) {
+      const promiseLoad = new Promise(function (resolve, reject) {
+        var img = document.createElement('img')
+        img.onload = function () {
+          resolve(img)
+        }
+        img.onerror = function () {
+          reject()
+        }
+        img.src = src
+      })
+      return promiseLoad
+    }
+    var src = "https://www.imooc.com/static/img/index/logo.png"
+    var result = loadImg(src)
+
+    result.then( function (img) {
+      console.log(img.width);
+    }, function () {
+      console.log('failed');
+    })
+    result.then( function(img) {
+      console.log(img.height);
+    })
+  </script>
+</body>
+
+</html>

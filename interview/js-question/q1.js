@@ -1,5 +1,5 @@
 
-function _new() {
+function _new(constructor) {
   //new 方法的实现
   let target = {}
   let [constructor, ...args] = [...arguments]  // 这句
@@ -8,5 +8,6 @@ function _new() {
   if (result && (typeof (result) === 'object' || typeof (result) === 'function')) {
     return result
   }
+  // 如果函数没有返回对象类型Object(包含Functoin, Array, Date, RegExg, Error)，那么new表达式中的函数调用将返回该对象引用
   return target
 }
