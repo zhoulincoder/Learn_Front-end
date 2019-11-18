@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ref的使用</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <counter @change="addTotal" ref="numOne"></counter>
+    <counter @change="addTotal" ref="numTwo"></counter>
+    <div>total: {{total}}</div>
+  </div>  
+
+  <script>
+    Vue.component('counter', {
+      template: '<div @click="handleClick">{{number}}</div>',
+      data: function () {
+        return {
+          number: 0
+        }
+      },
+      methods: {
+        handleClick: function () {
+          this.number ++,
+          this.$emit('change')
+        }
+      }
+    })
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        total: 0
+      },
+      methods: {
+        addTotal: function () {
+          this.total = this.$refs.numOne.number + this.$refs.numTwo.number
+          
+        }
+      }
+    })
+  </script>
+</body>
+</html>
