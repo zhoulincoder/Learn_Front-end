@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "@nuxtjs/pwa": "^3.0.0-beta.16",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "express": "^4.17.1",
